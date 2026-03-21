@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheng Shi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --grey: #888;
+  --light-grey: #ddd;
+  --serif: 'EB Garamond', Georgia, serif;
+  --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 48px;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.nav-logo {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-right a {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.nav-right a:hover { color: var(--grey); }
+
+/* ─── HERO ─── */
+.hero {
+  margin-top: 48px;
+}
+
+.hero-image-wrap {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #e8e4de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  background: #e8e4de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder span {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+.hero-caption {
+  padding: 1.2rem 2rem;
+  border-bottom: 1px solid var(--light-grey);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.hero-caption h2 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.hero-caption span {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--grey);
+  letter-spacing: 0.03em;
+}
+
+/* ─── SECTION HEADER ─── */
+.section-header {
+  padding: 2rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--light-grey);
+  padding-bottom: 1rem;
+}
+
+.section-header h2 {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.section-header a {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--grey);
+  transition: color 0.2s;
+}
+
+.section-header a:hover { color: var(--black); }
+
+/* ─── WORKS GRID ─── */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-left: 1px solid var(--light-grey);
+}
+
+.work-item {
+  border-right: 1px solid var(--light-grey);
+  border-bottom: 1px solid var(--light-grey);
+  cursor: pointer;
+}
+
+.work-item:hover .work-img { filter: brightness(0.96); }
+
+.work-img {
+  overflow: hidden;
+  background: #f0ece6;
+  aspect-ratio: 4/3;
+  transition: filter 0.3s;
+}
+
+.work-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.work-item:hover .work-img img { transform: scale(1.03); }
+
+.work-img.tall { aspect-ratio: 3/4; }
+.work-img.wide { aspect-ratio: 8/3; }
+
+.work-item.wide { grid-column: span 2; }
+.work-item.wide .work-img { aspect-ratio: 8/3; }
+
+.work-caption {
+  padding: 0.9rem 1rem 1rem;
+}
+
+.work-caption h3 {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.work-caption h3.named {
+  font-style: normal;
+  font-weight: 500;
+}
+
+.work-caption .year {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  margin-top: 0.25rem;
+}
+
+.work-caption .medium {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  color: #aaa;
+  margin-top: 0.1rem;
+  line-height: 1.4;
+}
+
+/* ─── PROJECT DIVIDER ─── */
+.project-divider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid var(--light-grey);
+  padding: 1.5rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.project-divider h3 {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.project-divider span {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+}
+
+/* ─── ABOUT ─── */
+.about-section {
+  border-top: 1px solid var(--light-grey);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.about-left {
+  padding: 3rem 2rem;
+  border-right: 1px solid var(--light-grey);
+}
+
+.about-left h2 {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.about-left p {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  font-weight: 400;
+  max-width: 480px;
+}
+
+.about-right {
+  padding: 3rem 2rem;
+}
+
+.about-right h2 {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.cv-entry {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--light-grey);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1rem;
+}
+
+.cv-year {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  padding-top: 0.1rem;
+}
+
+.cv-text {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.cv-category {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey);
+  padding: 1.5rem 0 0.5rem;
+}
+
+.cv-category:first-of-type { padding-top: 0; }
+
+/* ─── NEWS ─── */
+.news-section {
+  border-top: 1px solid var(--light-grey);
+}
+
+.news-list { list-style: none; }
+
+.news-item {
+  padding: 1.1rem 2rem;
+  border-bottom: 1px solid var(--light-grey);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.news-item:hover { background: #fafafa; }
+
+.news-item-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.news-item-date {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  white-space: nowrap;
+  padding-top: 0.15rem;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--light-grey);
+}
+
+.footer-copy {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--black); }
+
+/* ─── LIGHTBOX ─── */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.93);
+  z-index: 9000;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.lightbox.open { display: flex; }
+
+.lightbox-inner {
+  position: relative;
+  max-width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.lightbox-img-wrap {
+  width: 100%;
+  max-height: 70vh;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  min-width: 500px;
+}
+
+.lightbox-img-wrap img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.lightbox-placeholder {
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  min-width: 500px;
+}
+
+.lightbox-placeholder span {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: #444;
+  text-transform: uppercase;
+}
+
+.lightbox-text {
+  color: white;
+  text-align: left;
+  width: 100%;
+}
+
+.lightbox-text h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+}
+
+.lightbox-text .lb-meta {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 1rem;
+}
+
+.lightbox-text .lb-desc {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.75);
+  max-width: 600px;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 1.5rem; right: 2rem;
+  background: none; border: none;
+  color: white; font-family: var(--sans);
+  font-size: 1rem; cursor: pointer;
+  opacity: 0.5; transition: opacity 0.2s;
+  z-index: 9001; letter-spacing: 0.1em;
+}
+
+.lightbox-close:hover { opacity: 1; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .works-grid { grid-template-columns: repeat(2, 1fr); }
+  .work-item.wide { grid-column: span 2; }
+  .about-section { grid-template-columns: 1fr; }
+  .about-left { border-right: none; border-bottom: 1px solid var(--light-grey); }
+  .lightbox-img-wrap, .lightbox-placeholder { min-width: 300px; }
+}
+
+@media (max-width: 600px) {
+  .works-grid { grid-template-columns: 1fr; }
+  .work-item.wide { grid-column: 1; }
+  nav { padding: 0 1rem; }
+  .nav-right { gap: 1.2rem; }
+  .nav-right a.hide-sm { display: none; }
+  .hero-caption { flex-direction: column; gap: 0.3rem; }
+  .lightbox { padding: 1rem; }
+  .lightbox-inner { max-width: 95vw; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Sheng Shi</a>
+  <div class="nav-right">
+    <a href="#works">Works</a>
+    <a href="#about" class="hide-sm">About</a>
+    <a href="/cdn-cgi/l/email-protection#67140f02090027021f060a170b024904080a">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-image-wrap">
+    <img src="p06.jpg" alt="You Are Here">
+  </div>
+  <div class="hero-caption">
+    <h2>You Are Here</h2>
+    <span>Point of Interest, 2025–26</span>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="section-header">
+    <h2>Works</h2>
+  </div>
+
+  <!-- PROJECT 1 -->
+  <div class="project-divider">
+    <h3>Point of Interest</h3>
+    <span>2023–2024</span>
+  </div>
+
+  <div class="works-grid">
+
+    <div class="work-item wide" onclick="openLightbox({
+      title: 'You Are Here',
+      year: '2025',
+      medium: 'London map, 101.6 × 77 cm, red stickers, perforated suspension',
+      desc: 'One is a regular London map covered with red stickers. Each red dot sticker represents the location of a billboard. These billboard locations are not exact but represent the feeling that your world is filled with them, those places that affect your attention. I call this method Perceptual Cartography. When the audience scans the back of the map with the light wand, they can see the specific locations covered under the red marks.'
+    })">
+      <div class="work-img wide">
+        <img src="p06.jpg" alt="You Are Here">
+      </div>
+      <div class="work-caption">
+        <h3 class="named">You Are Here</h3>
+        <div class="year">2025</div>
+        <div class="medium">London map, 101.6 × 77 cm, red stickers, perforated suspension</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox({
+      title: 'In Stock',
+      year: '2025',
+      medium: 'Modified London tourist maps, covert placement, video documentation',
+      desc: 'A tourist map drawn and altered in description using the method of Perceptual Cartography. Photocopied in multiples and covertly placed in locations where tourist maps are sold. The reactions of customers and shop assistants who encountered the modified maps were recorded on video.'
+    })">
+      <div class="work-img">
+        <img src="p03.jpg" alt="In Stock">
+      </div>
+      <div class="work-caption">
+        <h3>In Stock</h3>
+        <div class="year">2025</div>
+        <div class="medium">Modified London tourist maps, covert placement, video documentation</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox({
+      title: 'Due Process',
+      year: '2025',
+      medium: '12 modified legal documents in frame, 21 × 29.7 cm (paper), 29.7 × 42 cm (frame)',
+      desc: 'A systematic modification of current UK legal texts. Key terms in the Criminal Justice Act and Criminal Damage Act, originally used to punish street graffiti, are replaced: "graffiti" becomes "advertising," "fly-posting" becomes "billboard-posting," "criminal damage" becomes "commercial damage." This reveals the double standard of law: both occupy visual space without public consent, yet graffiti writers are convicted because they do not pay taxes, while advertisers are legitimised because they are profitable.'
+    })">
+      <div class="work-img">
+        <img src="p05.jpg" alt="Due Process">
+      </div>
+      <div class="work-caption">
+        <h3>Due Process</h3>
+        <div class="year">2025</div>
+        <div class="medium">12 modified legal documents in frame, 21 × 29.7 cm</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox({
+      title: 'Point of Distribution',
+      year: '2025',
+      medium: 'Newspaper rack, 59 × 41 × 112 cm, filled with modified London tourist maps',
+      desc: 'Point of Distribution continues the examination of how commercial infrastructure naturalises the presence of advertising in public space. The newspaper rack — a form designed to distribute information — is recontextualised as a site that exposes the logic of attention capture embedded in everyday urban furniture.'
+    })">
+      <div class="work-img">
+        <img src="p04.jpg" alt="Point of Distribution">
+      </div>
+      <div class="work-caption">
+        <h3>Point of Distribution</h3>
+        <div class="year">2025</div>
+        <div class="medium">Newspaper rack, 59 × 41 × 112 cm</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox({
+      title: 'I ♥ LDN',
+      year: '2025',
+      medium: 'Photography, digital print, 29.7 × 42 cm, dimensions variable',
+      desc: 'A photographic series documenting JCDecaux advertising sites across London, repurposing the tourist souvenir slogan as a frame for examining how commercial visual infrastructure has become inseparable from the city\'s identity. The advertising hoarding replaces the landmark.'
+    })">
+      <div class="work-img">
+        <img src="p07.jpg" alt="I LDN">
+      </div>
+      <div class="work-caption">
+        <h3>I ♥ LDN</h3>
+        <div class="year">2025</div>
+        <div class="medium">Photography, digital print, 29.7 × 42 cm</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox({
+      title: 'Reference',
+      year: '2025',
+      medium: 'Two globes, ø25 cm / ø30 cm',
+      desc: 'Two globes placed in relation to one another examine how cartographic authority — the power to name, locate, and represent — operates as a form of ideological production. Against this, Perceptual Cartography proposes a mapping based on felt experience rather than institutional measurement.'
+    })">
+      <div class="work-img">
+        <img src="p20.jpg" alt="Reference">
+      </div>
+      <div class="work-caption">
+        <h3>Reference</h3>
+        <div class="year">2025</div>
+        <div class="medium">Two globes, ø25 cm / ø30 cm</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PROJECT 2 -->
+  <div class="project-divider">
+    <h3>Grok, Is This True?</h3>
+    <span>2025–26</span>
+  </div>
+
+  <div class="works-grid">
+
+    <div class="work-item wide" onclick="openLightbox({
+      title: 'Have Been Thinking Deeply for 24 Hours',
+      year: '2025',
+      medium: 'Two artist\'s books (one of LLM generation, B5 size), two hand-carved wooden bible stands (20.3 × 33 × 17.8 cm), glass table',
+      desc: 'The work juxtaposes conspiracy theories, historical events, and fabricated content alongside repeated instances of "@Grok is this true?" — materialising the collapse of multiple information sources into a single, controlled interface. At the top of each page: "You are absolutely right." At the bottom: "Grok, is this true?" This ironic circuit reveals the epistemological function of platform AI: not to find truth, but to confirm existing beliefs and extend user engagement. History is no longer written through human debate and consensus, but generated through capital-controlled AI systems.'
+    })">
+      <div class="work-img wide">
+        <img src="p08.jpg" alt="Have Been Thinking Deeply for 24 Hours">
+      </div>
+      <div class="work-caption">
+        <h3 class="named">Have Been Thinking Deeply for 24 Hours</h3>
+        <div class="year">2025</div>
+        <div class="medium">Two artist's books, two hand-carved wooden bible stands, glass table</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox({
+      title: 'Pedia',
+      year: '2025',
+      medium: 'Two acetate prints, 33.5 × 148 cm, 40 × 149.5 cm, hanging installation',
+      desc: 'Two books displayed on a lectern typically reserved for scripture: one a conspiracy theory text, one presenting historical documentation. Placed in equivalence, the work asks whether the authority of the stand confers legitimacy equally to both — and what infrastructure of belief allows one to be distinguished from the other.'
+    })">
+      <div class="work-img">
+        <img src="p10.jpg" alt="Have Been Thinking Deeply for 24 Hours">
+      </div>
+      <div class="work-caption">
+        <h3>Pedia</h3>
+        <div class="year">2025</div>
+        <div class="medium">Two acetate prints, hanging installation</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox({
+      title: 'In the History Section',
+      year: '2025',
+      medium: 'Modified books, library placement',
+      desc: 'AI-generated pseudo-historical reports mixing Watergate, Pizzagate, and fictional elements are placed within the history section of a public library. The intervention tests how institutional context — the shelving, the classification, the architecture of knowledge — grants credibility irrespective of content.'
+    })">
+      <div class="work-img">
+        <img src="p11.jpg" alt="In the History Section">
+      </div>
+      <div class="work-caption">
+        <h3>In the History Section</h3>
+        <div class="year">2025</div>
+        <div class="medium">AI-generated pseudo-investigative report book, covert placement in university library</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox({
+      title: 'Top Secret Files',
+      year: '2025',
+      medium: 'Safe, 34.7 × 19 × 24.7 cm, with encrypted external drive',
+      desc: 'Sheets of cellulose acetate printed with text hung in suspension, their transparency allowing layers of information to overlap and obscure one another. The work materialises the condition of contemporary information: simultaneously present and illegible, accessible and already filtered.'
+    })">
+      <div class="work-img">
+        <img src="p13.jpg" alt="Pedia">
+      </div>
+      <div class="work-caption">
+        <h3>Top Secret Files</h3>
+        <div class="year">2025</div>
+        <div class="medium">Safe, 34.7 × 19 × 24.7 cm, encrypted external drive</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox({
+      title: 'Pedia 2',
+      year: '2025',
+      medium: 'Acetate print, 35 × 45 cm, glass plate',
+      desc: 'A safe containing printed documents. The work plays on the gap between the promise of secrecy — the authority implied by classified material — and the arbitrariness of what is withheld. Institutional containers of truth are examined as objects of theatre.'
+    })">
+      <div class="work-img">
+        <img src="p12.jpg" alt="Top Secret Files">
+      </div>
+      <div class="work-caption">
+        <h3>Pedia 2</h3>
+        <div class="year">2025</div>
+        <div class="medium">Acetate print, 35 × 45 cm, glass plate</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PROJECT 3 -->
+  <div class="project-divider">
+    <h3>Evidence / Puzzle</h3>
+    <span>2025</span>
+  </div>
+
+  <div class="works-grid">
+
+    <div class="work-item wide" onclick="openLightbox({
+      title: 'Preserved, Protected, Prevented',
+      year: '2025',
+      medium: '64 evidence bags, 26 × 19 cm each, white puzzle pieces',
+      desc: '64 is not arbitrary. It is eight squared, the number of squares on a chessboard, and a scale repeatedly standardised within digital systems — in a 64-bit architecture, this is how information is segmented, stored, processed. Life itself is rendered computable through such logic: every action, every decision, every moment translated into discrete units that can be recorded, calculated, retrieved. These sixty-four fragments do not emerge as a natural whole. They are pre-defined elements, designed to be processed by a system that preceded them. Sealed in evidence bags — transparent yet untouchable — the white puzzle pieces promise connection while enforcing permanent isolation.'
+    })">
+      <div class="work-img wide">
+        <img src="p17.jpg" alt="Preserved, Protected, Prevented">
+      </div>
+      <div class="work-caption">
+        <h3 class="named">Preserved, Protected, Prevented</h3>
+        <div class="year">2025</div>
+        <div class="medium">64 evidence bags, 26 × 19 cm each, white puzzle pieces</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox({
+      title: 'Don\'t Understand Me, Don\'t Ignore Me, Just Exist Here',
+      year: '2024',
+      medium: 'Canvas (imitated introductory board, 30 × 40 cm), electronic textile printing, 100 × 100 cm',
+      desc: 'This piece began with a conversation. A friend doubted whether his drawing could be art. The work responds: it is not up to the author to decide if an act of creation is art or not. Drawing on Lacan\'s misidentification and Althusser\'s claim that "any reading is sinful, any reading is positional," the museum introduction board is used as both tool and target — exposing how institutional framing creates "art" and controls meaning. Absolute understanding is making the Other into oneself. When that Other disappears, understanding ceases to exist.'
+    })">
+      <div class="work-img">
+        <img src="p18.jpg" alt="Don't Understand Me, Don't Ignore Me, Just Exist Here">
+      </div>
+      <div class="work-caption">
+        <h3>Don't Understand Me, Don't Ignore Me, Just Exist Here</h3>
+        <div class="year">2024</div>
+        <div class="medium">Canvas, imitated introductory board, electronic textile printing</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox({
+      title: 'I Don\'t Want Subversion from 100 Years Ago, Who Is the Contemporary Artist?',
+      year: '2024',
+      medium: 'Canvas (imitated introductory board, 30 × 40 cm), offset printing of textiles banner, 300 × 50 cm',
+      desc: 'The garbled symbol "锟斤拷" — a character encoding error produced when Unicode and GBK standards collide — becomes a metaphor for contemporary art discourse: abstract terminology performing linguistic violence while claiming academic authority. If language murders things (Hegel), then institutional discourse murders artworks, and the viewer\'s identification murders what it claims to understand.'
+    })">
+      <div class="work-img">
+        <img src="p14.jpg" alt="锟斤拷">
+      </div>
+      <div class="work-caption">
+        <h3>I Don't Want Subversion from 100 Years Ago,<br>Who Is the Contemporary Artist?</h3>
+        <div class="year">2024</div>
+        <div class="medium">Canvas, imitated introductory board, offset printing of textiles banner, 300 × 50 cm</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-left">
+    <h2>Profile</h2>
+    <p>Sheng Shi (b. 2003, Jilin, China) is a conceptual artist whose practice examines how global platform systems — advertising, AI, data infrastructure — reshape perception, knowledge production, and everyday life. Working across installation, intervention, printed matter, and modified documents, the work operates between critique and complicity: acknowledging dependency on the systems it examines.</p>
+    <br>
+    <p>Born in Guangzhou, raised across China and the United Kingdom, Sheng Shi works bilingually and cross-culturally, tracing how the same platform logics manifest differently across contexts. Dyslexia has shaped a particular attentiveness to visual environments and the attention economy.</p>
+    <br>
+    <p>Sheng Shi studied at the Fine Arts School Affiliated to China Central Academy of Fine Arts, Beijing (2019–2022), and is completing a BA Fine Art (Extension) at Goldsmiths, University of London (2022–2025).</p>
+  </div>
+  <div class="about-right">
+    <h2>Selected CV</h2>
+
+    <div class="cv-category">Education</div>
+    <div class="cv-entry">
+      <div class="cv-year">2022–25</div>
+      <div class="cv-text">BA (Hons) Fine Art (Extension), Goldsmiths, University of London, London, UK</div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-year">2019–22</div>
+      <div class="cv-text">Art Foundation Programme, Fine Arts School Affiliated to China Central Academy of Fine Arts, Beijing, China</div>
+    </div>
+
+    <div class="cv-category">Solo Exhibitions</div>
+    <div class="cv-entry">
+      <div class="cv-year">2025</div>
+      <div class="cv-text"><em>Clear Skies after Night</em>, Private Project Space, Lewisham, London, UK</div>
+    </div>
+
+    <div class="cv-category">Group Exhibitions</div>
+    <div class="cv-entry">
+      <div class="cv-year">2023</div>
+      <div class="cv-text">BA Fine Art Extension Degree Show, Goldsmiths, University of London, London, UK</div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-year">2022</div>
+      <div class="cv-text"><em>UP&amp;UP</em>, Graduate Exhibition, Fine Arts School Affiliated to China Central Academy of Fine Arts, Beijing, China</div>
+    </div>
+
+    <div class="cv-category">In Development</div>
+    <div class="cv-entry">
+      <div class="cv-year">2025</div>
+      <div class="cv-text"><em>Thriving in the Precariat</em>, artist book</div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-year">2024–</div>
+      <div class="cv-text"><em>Grok, Is This True?</em></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© Sheng Shi 2025. All rights reserved</div>
+  <div class="footer-links">
+    <a href="/cdn-cgi/l/email-protection#65160d000b0225001d04081509004b060a08">Contact</a>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-img-wrap" id="lightbox-img-wrap">
+      <div class="lightbox-placeholder">
+        <span>Image to be added</span>
+      </div>
+    </div>
+    <div class="lightbox-text">
+      <h3 id="lb-title"></h3>
+      <div class="lb-meta" id="lb-meta"></div>
+      <div class="lb-desc" id="lb-desc"></div>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function openLightbox(data) {
+  document.getElementById('lb-title').textContent = data.title;
+  document.getElementById('lb-meta').textContent = data.year + (data.medium ? ' — ' + data.medium : '');
+  document.getElementById('lb-desc').textContent = data.desc || '';
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+  if (e && e.target !== e.currentTarget && !e.target.classList.contains('lightbox-close') && !e.target.textContent.includes('✕')) return;
+  document.getElementById('lightbo
