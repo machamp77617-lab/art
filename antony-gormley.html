@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antony Gormley</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ─── RESET ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+/* ─── ROOT ─── */
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --grey: #888;
+  --light-grey: #ddd;
+  --serif: 'EB Garamond', Georgia, serif;
+  --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 48px;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.nav-logo {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-right a {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--black);
+  transition: color 0.2s;
+}
+
+.nav-right a:hover { color: var(--grey); }
+
+.nav-search {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--black);
+  padding: 0;
+}
+
+/* ─── HERO / FEATURED ─── */
+.hero {
+  margin-top: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #e8e4de;
+}
+
+.hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.hero-image-wrap:hover img {
+  transform: scale(1.02);
+}
+
+.hero-caption {
+  padding: 1.2rem 2rem;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.hero-caption h2 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.hero-caption span {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--grey);
+  letter-spacing: 0.03em;
+}
+
+/* ─── MAIN GRID ─── */
+.works-section {
+  padding: 0;
+}
+
+.works-section-header {
+  padding: 2rem 2rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.works-section-header h2 {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.works-section-header a {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--grey);
+  transition: color 0.2s;
+}
+
+.works-section-header a:hover { color: var(--black); }
+
+/* ─── WORKS GRID ─── */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-left: 1px solid var(--light-grey);
+}
+
+.work-item {
+  border-right: 1px solid var(--light-grey);
+  border-bottom: 1px solid var(--light-grey);
+  cursor: pointer;
+}
+
+.work-item:hover .work-img img {
+  transform: scale(1.04);
+}
+
+.work-img {
+  overflow: hidden;
+  background: #f0ece6;
+  aspect-ratio: 4/3;
+}
+
+.work-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+/* placeholder for missing images */
+.work-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #e8e4de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-caption {
+  padding: 0.9rem 1rem 1rem;
+}
+
+.work-caption h3 {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.work-caption .year {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  margin-top: 0.2rem;
+  letter-spacing: 0.02em;
+}
+
+/* works with BOLD title (non-italic) are "named" works */
+.work-caption.named h3 {
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* ─── WIDE ITEM (spans 2 cols) ─── */
+.work-item.wide {
+  grid-column: span 2;
+}
+
+.work-item.wide .work-img {
+  aspect-ratio: 8/3;
+}
+
+/* ─── TALL ITEM ─── */
+.work-item.tall .work-img {
+  aspect-ratio: 3/4;
+}
+
+/* ─── NEWS STRIP ─── */
+.news-section {
+  border-top: 1px solid var(--light-grey);
+}
+
+.news-section-header {
+  padding: 2rem 2rem 0;
+}
+
+.news-section-header h2 {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.news-list {
+  list-style: none;
+}
+
+.news-item {
+  padding: 1.1rem 2rem;
+  border-bottom: 1px solid var(--light-grey);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+.news-item:hover { background: #fafafa; }
+
+.news-item-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.news-item-date {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  white-space: nowrap;
+  padding-top: 0.15rem;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--light-grey);
+  background: var(--white);
+}
+
+.footer-copy {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--black); }
+
+/* ─── LIGHTBOX ─── */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9000;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-inner {
+  position: relative;
+  max-width: 80vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.lightbox-inner img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+}
+
+.lightbox-text {
+  color: white;
+  text-align: center;
+}
+
+.lightbox-text h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.lightbox-text span {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  z-index: 9001;
+}
+
+.lightbox-close:hover { opacity: 1; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .work-item.wide {
+    grid-column: span 2;
+  }
+
+  .work-item.wide .work-img {
+    aspect-ratio: 4/3;
+  }
+
+  nav { padding: 0 1rem; }
+  .nav-right { gap: 1.2rem; }
+
+  .hero-caption { padding: 1rem; }
+
+  .works-section-header,
+  .news-section-header { padding: 1.5rem 1rem 1rem; }
+
+  .news-item { padding: 1rem; }
+
+  .lightbox-inner { max-width: 95vw; }
+  .lightbox { padding: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .works-grid { grid-template-columns: 1fr; }
+  .work-item.wide { grid-column: 1; }
+  .work-item.wide .work-img { aspect-ratio: 4/3; }
+  .nav-right a.hide-sm { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Antony Gormley</a>
+  <div class="nav-right">
+    <a href="#works">Works</a>
+    <a href="#news">News</a>
+    <a href="#" class="hide-sm">Resources</a>
+    <a href="#" class="hide-sm">Profile</a>
+    <button class="nav-search" aria-label="Search">Search</button>
+  </div>
+</nav>
+
+<!-- HERO: Featured work -->
+<section class="hero">
+  <div class="hero-image-wrap">
+    <img
+      src="https://cdn.sanity.io/images/rgmbly0p/production/aea802a5c717382353444423217b097aa99dbee8-2500x1875.jpg"
+      alt="Extended Strapworks"
+      loading="eager"
+    >
+  </div>
+  <div class="hero-caption">
+    <h2>Extended Strapworks</h2>
+    <span>2022 26</span>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="works-section" id="works">
+  <div class="works-section-header">
+    <h2>Sculpture</h2>
+    <a href="#">See all works</a>
+  </div>
+
+  <div class="works-grid">
+
+    <!-- Row 1 -->
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/8eac494ed397e5dd33d912340e4ed2235df0f8bb-2500x1875.jpg" alt="Attend" loading="lazy">
+      </div>
+      <div class="work-caption named">
+        <h3>Attend</h3>
+        <div class="year">2025</div>
+      </div>
+    </div>
+
+    <div class="work-item tall" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/c379111644afb7ee30293fe0d02e3bd9981c68e7-1667x2500.jpg" alt="Close" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Close</h3>
+        <div class="year">2025</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/16e5cf38d6af3cc028ef0924aac5a4874c8458bd-2500x1875.jpg" alt="Home" loading="lazy">
+      </div>
+      <div class="work-caption named">
+        <h3>Home</h3>
+        <div class="year">2025</div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="work-item wide" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/7109af0ab9388c2b66ea966fd8d7cb2caf19041d-2500x1875.jpg" alt="Cumber" loading="lazy">
+      </div>
+      <div class="work-caption named">
+        <h3>Cumber</h3>
+        <div class="year">2024</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/6dc4a92d965a0a65c3fc9f5943c53849916236f0-2500x1667.jpg" alt="Resting Place II" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Resting Place II</h3>
+        <div class="year">2024</div>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="work-item tall" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/d32ad7d96e11e13de29bc7fda7156f8d8119106e-2500x3333.jpg" alt="Stand" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Stand</h3>
+        <div class="year">2023</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/05d7998bf7587344a70c94dd83632f87537dabea-2428x1635.jpg" alt="Big Tender" loading="lazy">
+      </div>
+      <div class="work-caption named">
+        <h3>Big Tender</h3>
+        <div class="year">2023</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/8d44826a71dcec5fb82d73d8ab2622a8b9c00440-2500x1875.jpg" alt="Retreat: Lounge" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Retreat: Lounge</h3>
+        <div class="year">2023</div>
+      </div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/25f90c16aeb26aa7253c695931f3ce847ed60e02-3000x2250.jpg" alt="Squidge" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Squidge</h3>
+        <div class="year">2022</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/7fead3b876ee8817d40704c02b9de2124cb015c0-2500x1875.jpg" alt="Grasp (Block)" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Grasp (Block)</h3>
+        <div class="year">2019</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/fc7f663c4605c02fed90dfc3e270cf2dc93dc5f1-3000x3993.jpg" alt="Batten" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Batten</h3>
+        <div class="year">2019</div>
+      </div>
+    </div>
+
+    <!-- Row 5 -->
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/0d1e6be4327c653903efc212e7cbfdd1b76adeba-3000x2000.jpg" alt="Co-ordinate VI" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Co-ordinate VI</h3>
+        <div class="year">2019</div>
+      </div>
+    </div>
+
+    <div class="work-item wide" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/9698f4d8bb6e8e0137184423554e971d11dbc903-3000x2250.jpg" alt="Pile I" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Pile I</h3>
+        <div class="year">2017</div>
+      </div>
+    </div>
+
+    <!-- Row 6 -->
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/afc3374712b821fdee84f5d22f89827f834fe905-3000x2248.jpg" alt="Sleeping Field" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Sleeping Field</h3>
+        <div class="year">2015 16</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/b4f3f70cdaf7d8ce27191fce22bfc716e1ef0efc-3000x2247.jpg" alt="Run" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Run</h3>
+        <div class="year">2016</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/8058ac343de630e692947a7e9f98354dc4139288-3000x1996.jpg" alt="Grip" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Grip</h3>
+        <div class="year">2014</div>
+      </div>
+    </div>
+
+    <!-- Row 7: iconic works -->
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/e10bb069a5975f03bec8cf48e6a0b2e08009dec2-3000x2252.jpg" alt="Knot II" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Knot II</h3>
+        <div class="year">2010</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/4cc8b41d9c2f9ffd10703c6dc8361127856efbbc-3000x1996.jpg" alt="Inside Australia" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Inside Australia</h3>
+        <div class="year">2003</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/94a499c9db1fb5c079defce37be39496d249e167-3000x1995.jpg" alt="Another Place" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Another Place</h3>
+        <div class="year">1997</div>
+      </div>
+    </div>
+
+    <!-- Row 8: Angel -->
+    <div class="work-item wide" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/ea8c2f84704c6606e131a84a17f3256bff81f030-2800x3000.jpg" alt="Angel of the North" loading="lazy">
+      </div>
+      <div class="work-caption named">
+        <h3>Angel of the North</h3>
+        <div class="year">1998</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/16907554e5aac279c6fc5c0936d23128813476f8-3000x2364.jpg" alt="Critical Mass II" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Critical Mass II</h3>
+        <div class="year">1995</div>
+      </div>
+    </div>
+
+    <!-- Row 9: early -->
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/ef68041d69abbc36f3edcadf28ae006a0e93a64b-2249x3000.jpg" alt="Sense" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Sense</h3>
+        <div class="year">1991</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/c57dcdcd74851f0fef6d76eae50b0fa333ebe412-3000x2357.jpg" alt="Flesh" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Flesh</h3>
+        <div class="year">1990</div>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="openLightbox(this)">
+      <div class="work-img">
+        <img src="https://cdn.sanity.io/images/rgmbly0p/production/4a604f23b312cfc5551cc86776f42e1fcbad0bc6-3000x2339.jpg" alt="Three Ways: Mould Hole And Passage" loading="lazy">
+      </div>
+      <div class="work-caption">
+        <h3>Three Ways: Mould Hole And Passage</h3>
+        <div class="year">1981</div>
+      </div>
+    </div>
+
+  </div><!-- /works-grid -->
+
+</section>
+
+<!-- NEWS -->
+<section class="news-section" id="news">
+  <div class="news-section-header">
+    <h2>News</h2>
+  </div>
+  <ul class="news-list">
+    <li class="news-item">
+      <div class="news-item-title"><em>Drawing: Antony Gormley</em>, published by Thames & Hudson</div>
+      <div class="news-item-date">23 April 2026</div>
+    </li>
+    <li class="news-item">
+      <div class="news-item-title">Survey, Nasher Sculpture Center, Dallas, Texas</div>
+      <div class="news-item-date">13 Sep 2025 4 Jan 2026</div>
+    </li>
+    <li class="news-item">
+      <div class="news-item-title">Inextricable, White Cube, Seoul, South Korea</div>
+      <div class="news-item-date">2 Sep 18 Oct 2025</div>
+    </li>
+    <li class="news-item">
+      <div class="news-item-title">Bukhara Biennial opens featuring Antony Gormley</div>
+      <div class="news-item-date">5 Sep 23 Nov 2025</div>
+    </li>
+    <li class="news-item">
+      <div class="news-item-title">Collaboration between Antony Gormley and Tadao Ando opens at Museum SAN</div>
+      <div class="news-item-date">20 June 2025</div>
+    </li>
+    <li class="news-item">
+      <div class="news-item-title"><em>Ground</em>, published by Museum SAN</div>
+      <div class="news-item-date">August 2025</div>
+    </li>
+  </ul>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© Antony Gormley 2026. All rights reserved</div>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Cookie Policy</a>
+    <a href="#">Other Policies</a>
+    <a href="#">Website credits</a>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-inner">
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-text">
+      <h3 id="lightbox-title"></h3>
+      <span id="lightbox-year"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openLightbox(item) {
+    const img = item.querySelector('.work-img img');
+    const title = item.querySelector('.work-caption h3');
+    const year = item.querySelector('.work-caption .year');
+
+    if (!img) return;
+
+    document.getElementById('lightbox-img').src = img.src.replace('w=375', 'w=1600');
+    document.getElementById('lightbox-title').textContent = title ? title.textContent : '';
+    document.getElementById('lightbox-year').textContent = year ? year.textContent : '';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(e) {
+    if (e && e.target !== e.currentTarget && !e.target.classList.contains('lightbox-close')) return;
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>

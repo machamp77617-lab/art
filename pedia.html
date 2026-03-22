@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedia Sheng Shi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --grey: #888;
+  --light-grey: #ddd;
+  --serif: 'EB Garamond', Georgia, serif;
+  --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 48px;
+  border-bottom: 1px solid var(--light-grey);
+}
+.nav-logo {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.nav-right a {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.nav-right a:hover { color: var(--grey); }
+
+/* BACK BREADCRUMB */
+.breadcrumb {
+  margin-top: 48px;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--light-grey);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  letter-spacing: 0.05em;
+}
+.breadcrumb a { color: var(--grey); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--black); }
+.breadcrumb span { color: var(--black); }
+
+/* HERO IMAGE */
+.work-hero {
+  width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+  background: #f0ece6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.work-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: 80vh;
+}
+.work-hero-placeholder {
+  width: 100%;
+  height: 60vh;
+  background: #e8e4de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.work-hero-placeholder span {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+/* MAIN LAYOUT */
+.work-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--light-grey);
+}
+
+/* LEFT: info */
+.work-info {
+  padding: 3rem 2rem 4rem;
+  border-right: 1px solid var(--light-grey);
+  position: sticky;
+  top: 48px;
+  align-self: start;
+}
+.work-project {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 1rem;
+}
+.work-title {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+.work-title.named { font-style: normal; font-weight: 500; }
+.work-meta {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--light-grey);
+}
+.work-meta-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+}
+.work-meta-label {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey);
+  padding-top: 0.1rem;
+}
+.work-meta-value {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.work-desc {
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--black);
+}
+.work-desc p + p {
+  margin-top: 1em;
+}
+
+/* RIGHT: images */
+.work-images {
+  padding: 3rem 2rem 4rem;
+}
+.work-images-label {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--light-grey);
+}
+.image-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--light-grey);
+}
+.image-slot {
+  background: var(--white);
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.image-slot img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.image-slot:hover img { transform: scale(1.02); }
+.image-slot-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #f0ece6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.image-slot-placeholder span {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: #ccc;
+  text-transform: uppercase;
+}
+.image-caption {
+  padding: 0.6rem 0 1rem;
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  color: var(--grey);
+  letter-spacing: 0.03em;
+}
+
+/* ADD IMAGE NOTE */
+.add-image-note {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px dashed var(--light-grey);
+  text-align: center;
+}
+.add-image-note span {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  color: #ccc;
+  text-transform: uppercase;
+}
+
+/* NAV BETWEEN WORKS */
+.work-nav {
+  border-top: 1px solid var(--light-grey);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.work-nav-item {
+  padding: 1.5rem 2rem;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.work-nav-item:hover { background: #fafafa; }
+.work-nav-item.next { border-left: 1px solid var(--light-grey); text-align: right; }
+.work-nav-label {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 0.4rem;
+}
+.work-nav-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 9000;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+.lightbox-close {
+  position: fixed;
+  top: 1.5rem; right: 2rem;
+  background: none; border: none;
+  color: white; font-family: var(--sans);
+  font-size: 0.75rem; cursor: pointer;
+  opacity: 0.5; letter-spacing: 0.1em;
+  transition: opacity 0.2s;
+}
+.lightbox-close:hover { opacity: 1; }
+
+/* FOOTER */
+footer {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--light-grey);
+}
+.footer-copy {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .work-body { grid-template-columns: 1fr; }
+  .work-info {
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--light-grey);
+    padding: 2rem 1rem;
+  }
+  .work-images { padding: 2rem 1rem; }
+  nav { padding: 0 1rem; }
+  .breadcrumb { padding: 1rem; }
+  .work-nav-item { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Sheng Shi</a>
+  <div class="nav-right">
+    <a href="index.html#works">Works</a>
+    <a href="index.html#about">About</a>
+    <a href="/cdn-cgi/l/email-protection#84f7ece1eae3c4e1fce5e9f4e8e1aae7ebe9">Contact</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Sheng Shi</a>
+  <span>/</span>
+  <a href="index.html#works">Works</a>
+  <span>/</span>
+  <span>Grok, Is This True?</span>
+  <span>/</span>
+  <span>Pedia</span>
+</div>
+
+<div class="work-hero">
+  <img src="pedia-1.jpg" alt="Pedia">
+</div>
+
+<div class="work-body">
+
+  <div class="work-info">
+    <div class="work-project">Grok, Is This True?</div>
+    <h1 class="work-title ">Pedia</h1>
+
+    <div class="work-meta">
+      <div class="work-meta-row">
+        <div class="work-meta-label">Year</div>
+        <div class="work-meta-value">2025</div>
+      </div>
+      <div class="work-meta-row">
+        <div class="work-meta-label">Material</div>
+        <div class="work-meta-value">Two acetate prints, 33.5 × 148 cm, 40 × 149.5 cm, hanging installation</div>
+      </div>
+      
+    </div>
+
+    <div class="work-desc">
+      <p>Two elongated screenshots are printed on transparent acetate: Grokipedia's self-description and Wikipedia's entry on Grokipedia. Suspended before a floor-to-ceiling window, the city remains visible through the text.</p>
+<p>The sheets use opposing printing logics. Wikipedia presents knowledge as black text on a transparent ground; Grokipedia reverses this, using a black ground with cut-out text, where knowledge appears as absence. Wikipedia hangs in front, Grokipedia behind, its black field blocking light and view, allowing visibility only through language. Wikipedia's text falls onto this darkness and disappears, visually absorbing critique. Despite opposing positions, both adopt the same encyclopaedic tone and claim to objectivity, becoming nearly indistinguishable.</p>
+    </div>
+  </div>
+
+  <div class="work-images">
+    <div class="work-images-label">Images</div>
+    <div class="image-grid">
+            <div class="image-slot" onclick="openLightbox('pedia-1.jpg')">
+        <img src="pedia-1.jpg" alt="Pedia installation view, front">
+      </div>
+      <div class="image-caption">Installation view two acetate sheets, window</div>
+      <div class="image-slot" onclick="openLightbox('pedia-3.jpg')">
+        <img src="pedia-3.jpg" alt="Pedia side view, single acetate">
+      </div>
+      <div class="image-caption">Detail Grokipedia acetate, suspended</div>
+      <div class="image-slot" onclick="openLightbox('pedia-2-musk.jpg')">
+        <img src="pedia-2-musk.jpg" alt="Pedia Grokipedia Wikipedia entry detail">
+      </div>
+      <div class="image-caption">Detail Wikipedia entry on Grokipedia (Elon Musk)</div>
+    </div>
+    <div class="add-image-note">
+      <span>Additional images can be added here</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="work-nav">
+  <a class="work-nav-item prev" href="top-secret-files.html">
+    <div class="work-nav-label">← Previous</div>
+    <div class="work-nav-title">Top Secret Files</div>
+  </a>
+  <a class="work-nav-item next" href="pedia-2.html">
+    <div class="work-nav-label">Next →</div>
+    <div class="work-nav-title">Pedia 2</div>
+  </a>
+</div>
+
+<footer>
+  <div class="footer-copy">© Sheng Shi 2025. All rights reserved</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function openLightbox(src) {
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  docume
