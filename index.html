@@ -40,7 +40,7 @@ html, body {
   animation: fadeImg 2s ease 0.3s forwards;
 }
 
-/* dark overlay subtle */
+/* dark overlay — subtle */
 .splash-overlay {
   position: absolute;
   inset: 0;
@@ -52,7 +52,7 @@ html, body {
   );
 }
 
-/* NAME bottom left */
+/* NAME — bottom left */
 .splash-name {
   position: absolute;
   bottom: 3.5rem;
@@ -79,7 +79,7 @@ html, body {
   margin-top: 0.6rem;
 }
 
-/* CLICK HINT bottom center */
+/* CLICK HINT — bottom center */
 .splash-hint {
   position: absolute;
   bottom: 2rem;
@@ -191,10 +191,19 @@ html, body {
     <div class="nav-divider"></div>
     <a href="sheng-shi.html#about">About</a>
     <div class="nav-divider"></div>
-    <a href="/cdn-cgi/l/email-protection#9fecf7faf1f8dffae7fef2eff3fab1fcf0f2">Contact</a>
+    <a href="mailto:sheng@example.com">Contact</a>
   </nav>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Click anywhere (except nav) to enter
   document.getElementById('splash').addEventListener('click', function() {
+    this.classList.add('out');
+    setTimeout(() => {
+      window.location.href = 'sheng-shi.html';
+    }, 580);
+  });
+</script>
+
+</body>
+</html>
