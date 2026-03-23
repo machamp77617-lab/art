@@ -190,12 +190,7 @@ nav {
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--light-grey);
 }
-.image-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: var(--light-grey);
-}
+
 .image-slot {
   background: var(--white);
   overflow: hidden;
@@ -377,29 +372,39 @@ footer {
     </div>
   </div>
 
-  <div class="work-images">
+    <div class="work-images">
     <div class="work-images-label">Images</div>
-    <div class="image-grid">
-      <div class="image-slot" onclick="openLightbox('i-dont-want-subversion-1.jpg')">
-        <img src="i-dont-want-subversion-1.jpg" alt="">
+    <div class="carousel">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="i-dont-want-subversion-1.jpg" alt="" onclick="openLightbox('i-dont-want-subversion-1.jpg')">
+          <div class="carousel-caption">Installation view, viewers reading manuscripts</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="i-dont-want-subversion-2.jpg" alt="" onclick="openLightbox('i-dont-want-subversion-2.jpg')">
+          <div class="carousel-caption">Installation view, 锟斤拷 banner</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="i-dont-want-subversion-3.jpg" alt="" onclick="openLightbox('i-dont-want-subversion-3.jpg')">
+          <div class="carousel-caption">Manuscript detail</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="i-dont-want-subversion-4.jpg" alt="" onclick="openLightbox('i-dont-want-subversion-4.jpg')">
+          <div class="carousel-caption">Viewers reading manuscripts during exhibition</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="i-dont-want-subversion-5.jpg" alt="" onclick="openLightbox('i-dont-want-subversion-5.jpg')">
+          <div class="carousel-caption">Banner corner with introductory board below</div>
+        </div>
       </div>
-      <div class="image-caption">Installation view, viewers reading manuscripts</div>
-      <div class="image-slot" onclick="openLightbox('i-dont-want-subversion-2.jpg')">
-        <img src="i-dont-want-subversion-2.jpg" alt="">
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="carousel-prev">← Prev</button>
+        <span class="carousel-counter" id="carousel-counter"></span>
+        <button class="carousel-btn" id="carousel-next">Next →</button>
       </div>
-      <div class="image-caption">Installation view, 锟斤拷 banner</div>
-      <div class="image-slot" onclick="openLightbox('i-dont-want-subversion-3.jpg')">
-        <img src="i-dont-want-subversion-3.jpg" alt="">
-      </div>
-      <div class="image-caption">Manuscript detail</div>
-      <div class="image-slot" onclick="openLightbox('i-dont-want-subversion-4.jpg')">
-        <img src="i-dont-want-subversion-4.jpg" alt="">
-      </div>
-      <div class="image-caption">Viewers reading manuscripts during exhibition</div>
-      <div class="image-slot" onclick="openLightbox('i-dont-want-subversion-5.jpg')">
-        <img src="i-dont-want-subversion-5.jpg" alt="">
-      </div>
-      <div class="image-caption">Banner corner with introductory board below</div>
+    </div>
+  </div>
+
   </div>
 
 </div>

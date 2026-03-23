@@ -67,100 +67,6 @@ nav {
 
 .nav-right a:hover { color: var(--grey); }
 
-/* ─── HERO ─── */
-.hero {
-  margin-top: 48px;
-}
-
-.hero-image-wrap {
-  width: 100%;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.placeholder {
-  width: 100%;
-  height: 100%;
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.placeholder span {
-  font-family: var(--sans);
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  color: #bbb;
-  text-transform: uppercase;
-}
-
-.hero-caption {
-  padding: 1.2rem 2rem;
-  border-bottom: 1px solid var(--light-grey);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.hero-caption h2 {
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.hero-caption span {
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  color: var(--grey);
-  letter-spacing: 0.03em;
-}
-
-
-/* ─── WORK LIST ─── */
-.work-list {
-  list-style: none;
-  border-left: 1px solid var(--light-grey);
-}
-
-.work-list-item {
-  padding: 1.1rem 2rem;
-  border-right: 1px solid var(--light-grey);
-  border-bottom: 1px solid var(--light-grey);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: baseline;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.work-list-item:hover {
-  background: #f8f8f8;
-}
-
-.work-list-item:hover .work-list-title {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.work-list-title {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  font-style: italic;
-  font-weight: 400;
-}
-
-.work-list-meta {
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  color: var(--grey);
-}
-
 /* ─── SECTION HEADER ─── */
 .section-header {
   padding: 2rem 2rem 0;
@@ -192,21 +98,21 @@ nav {
 .project-divider {
   margin: 0;
   border: none;
-  border-top: 1px solid var(--light-grey);
-  padding: 1.5rem 2rem 0;
+  border-top: 3px solid var(--black);
+  padding: 2rem 2rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding-bottom: 1rem;
   border-bottom: 1px solid var(--light-grey);
+  margin-top: 3rem;
 }
 
 .project-divider h3 {
   font-family: var(--sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .project-divider span {
@@ -487,15 +393,6 @@ footer {
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-image-wrap">
-    <img src="you-are-here-1.jpg" alt="You Are Here">
-  </div>
-  <div class="hero-caption">
-    <h2>You Are Here</h2>
-    <span>Point of Interest, 2025 26</span>
-  </div>
-</section>
 
 <!-- WORKS -->
 <section id="works">
@@ -504,7 +401,7 @@ footer {
   </div>
 
   <!-- PROJECT 1 -->
-  <div class="project-divider">
+  <div class="project-divider" style="margin-top:0; border-top: 3px solid var(--black);">
     <h3>Point of Interest</h3>
     <span>2023–2025</span>
   </div>

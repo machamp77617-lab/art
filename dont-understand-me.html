@@ -190,12 +190,7 @@ nav {
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--light-grey);
 }
-.image-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: var(--light-grey);
-}
+
 .image-slot {
   background: var(--white);
   overflow: hidden;
@@ -377,17 +372,27 @@ footer {
     </div>
   </div>
 
-  <div class="work-images">
+    <div class="work-images">
     <div class="work-images-label">Images</div>
-    <div class="image-grid">
-      <div class="image-slot" onclick="openLightbox('dont-understand-me-1.jpg')">
-        <img src="dont-understand-me-1.jpg" alt="">
+    <div class="carousel">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="dont-understand-me-1.jpg" alt="" onclick="openLightbox('dont-understand-me-1.jpg')">
+          <div class="carousel-caption">Installation view</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="dont-understand-me-2.jpg" alt="" onclick="openLightbox('dont-understand-me-2.jpg')">
+          <div class="carousel-caption">Introductory board detail, all text written as X</div>
+        </div>
       </div>
-      <div class="image-caption">Installation view</div>
-      <div class="image-slot" onclick="openLightbox('dont-understand-me-2.jpg')">
-        <img src="dont-understand-me-2.jpg" alt="">
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="carousel-prev">← Prev</button>
+        <span class="carousel-counter" id="carousel-counter"></span>
+        <button class="carousel-btn" id="carousel-next">Next →</button>
       </div>
-      <div class="image-caption">Introductory board detail, all text written as X</div>
+    </div>
+  </div>
+
   </div>
 
 </div>

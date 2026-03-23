@@ -190,12 +190,7 @@ nav {
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--light-grey);
 }
-.image-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: var(--light-grey);
-}
+
 .image-slot {
   background: var(--white);
   overflow: hidden;
@@ -377,13 +372,23 @@ footer {
     </div>
   </div>
 
-  <div class="work-images">
+    <div class="work-images">
     <div class="work-images-label">Images</div>
-    <div class="image-grid">
-      <div class="image-slot" onclick="openLightbox('in-stock-1.jpg')">
-        <img src="in-stock-1.jpg" alt="">
+    <div class="carousel">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="in-stock-1.jpg" alt="" onclick="openLightbox('in-stock-1.jpg')">
+          <div class="carousel-caption">Modified tourist map</div>
+        </div>
       </div>
-      <div class="image-caption">Modified tourist map</div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="carousel-prev">← Prev</button>
+        <span class="carousel-counter" id="carousel-counter"></span>
+        <button class="carousel-btn" id="carousel-next">Next →</button>
+      </div>
+    </div>
+  </div>
+
   </div>
 
 </div>
