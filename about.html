@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Preserved, Protected, Prevented Sheng Shi</title>
+<title>About — Sheng Shi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
+
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
@@ -330,103 +331,163 @@ footer {
   .breadcrumb { padding: 1rem; }
   .work-nav-item { padding: 1rem; }
 }
+
+
+.about-page {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 48px);
+}
+
+.about-left {
+  padding: 4rem 3rem 4rem 2rem;
+  border-right: 1px solid var(--light-grey);
+}
+
+.about-right {
+  padding: 4rem 2rem 4rem 3rem;
+}
+
+.about-section-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.about-bio {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 520px;
+}
+
+.about-bio p + p {
+  margin-top: 1.2em;
+}
+
+.cv-category {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey);
+  padding: 1.5rem 0 0.5rem;
+}
+
+.cv-category:first-of-type {
+  padding-top: 0;
+}
+
+.cv-entry {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--light-grey);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1rem;
+}
+
+.cv-year {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  padding-top: 0.1rem;
+}
+
+.cv-text {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cv-text em {
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    grid-template-columns: 1fr;
+  }
+  .about-left {
+    border-right: none;
+    border-bottom: 1px solid var(--light-grey);
+    padding: 2rem 1rem;
+  }
+  .about-right {
+    padding: 2rem 1rem;
+  }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="index.html">Sheng Shi</a>
+  <a class="nav-logo" href="sheng-shi.html">Sheng Shi</a>
   <div class="nav-right">
-    <a href="index.html#works">Works</a>
+    <a href="sheng-shi.html#works">Works</a>
     <a href="about.html">About</a>
-    <a href="/cdn-cgi/l/email-protection#95e6fdf0fbf2d5f0edf4f8e5f9f0bbf6faf8">Contact</a>
+    <a href="contact.html">Contact</a>
   </div>
 </nav>
 
-<div class="breadcrumb">
-  <a href="index.html">Sheng Shi</a>
-  <span>/</span>
-  <a href="index.html#works">Works</a>
-  <span>/</span>
-  <span>XXXXXX</span>
-  <span>/</span>
-  <span>Preserved, Protected, Prevented</span>
-</div>
-<div class="work-body">
+<div class="about-page">
 
-  <div class="work-info">
-    <div class="work-project">XXXXXX</div>
-    <h1 class="work-title named">Preserved, Protected, Prevented</h1>
-
-    <div class="work-meta">
-      <div class="work-meta-row">
-        <div class="work-meta-label">Year</div>
-        <div class="work-meta-value">2025</div>
-      </div>
-      <div class="work-meta-row">
-        <div class="work-meta-label">Material</div>
-        <div class="work-meta-value">64 evidence bags, 26 × 19 cm each, white puzzle pieces</div>
-      </div>
-      
-    </div>
-
-    <div class="work-desc">
-      <p>64 is not arbitrary. It is eight squared, the number of squares on a chessboard, and a scale repeatedly standardised within digital systems in a 64-bit architecture, this is how information is segmented, stored, processed. Life itself is rendered computable through such logic: every action, every decision, every moment translated into discrete units that can be recorded, calculated, retrieved.</p>
-<p>The jagged edges of a puzzle piece are originally a promise of connection. In this work, that possibility is permanently sealed away by evidence bags. The essence of an evidence bag is irreversible closure. Through the transparent plastic, the audience can see the shape of the fragments but can never touch them.</p>
-<p>The most absurd part is that these puzzle pieces are entirely white. Even if the bags were opened and the fragments assembled according to their preset shapes, the result would be a hollow shell. The so-called quantified self does not culminate in a more complete life, but rather a structurally intact, white, ghost-like existence.</p>
+  <div class="about-left">
+    <div class="about-section-label">Profile</div>
+    <div class="about-bio">
+      <p>Sheng Shi (b. 2003, Jilin, China) is a conceptual artist working across installation, text, and intervention. Based in London, their practice examines how platform capitalism colonises attention, manufactures consensus, and privatises psychological distress. The work makes visible the structures through which truth, attention, and imagination are monopolised.</p>
+      <p>Recent projects include <em>Grok, Is This True?</em>, examining AI's authority in legitimising conspiracy theories, and <em>Point of Interest</em>, a subjective mapping of urban advertising that exposes legal asymmetries between corporate billboards and graffiti.</p>
+      <p>Sheng Shi studied at the Fine Arts School Affiliated to China Central Academy of Fine Arts, Beijing (2019–2022), and completed a BA Fine Art (Extension) at Goldsmiths, University of London (2022–2026).</p>
     </div>
   </div>
 
-  <div class="work-images">
-    <div class="work-images-label">Images</div>
-    <div class="image-grid">
-      <div class="image-slot" onclick="openLightbox('preserved-2.jpg')">
-        <img src="preserved-2.jpg" alt="">
-      </div>
-      <div class="image-caption">Installation view, front</div>
-      <div class="image-slot" onclick="openLightbox('preserved-1.jpg')">
-        <img src="preserved-1.jpg" alt="">
-      </div>
-      <div class="image-caption">Installation view, angle</div>
-      <div class="image-slot" onclick="openLightbox('preserved-3.jpg')">
-        <img src="preserved-3.jpg" alt="">
-      </div>
-      <div class="image-caption">Detail, evidence bags on floor and wall</div>
-      <div class="image-slot" onclick="openLightbox('preserved-4.jpg')">
-        <img src="preserved-4.jpg" alt="">
-      </div>
-      <div class="image-caption">Evidence bag detail</div>
+  <div class="about-right">
+    <div class="about-section-label">CV</div>
+
+    <div class="cv-category">Education</div>
+    <div class="cv-entry">
+      <div class="cv-year">2022–26</div>
+      <div class="cv-text">BA (Hons) Fine Art (Extension), Goldsmiths, University of London, London, UK</div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-year">2019–22</div>
+      <div class="cv-text">Art Foundation Programme, Fine Arts School Affiliated to China Central Academy of Fine Arts, Beijing, China</div>
+    </div>
+
+    <div class="cv-category">Solo Exhibitions</div>
+    <div class="cv-entry">
+      <div class="cv-year">2025</div>
+      <div class="cv-text"><em>Clear Skies after Night</em>, Private Project Space, Lewisham, London, UK</div>
+    </div>
+
+    <div class="cv-category">Group Exhibitions</div>
+    <div class="cv-entry">
+      <div class="cv-year">2023</div>
+      <div class="cv-text">BA Fine Art Extension Degree Show, Goldsmiths, University of London, London, UK</div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-year">2022</div>
+      <div class="cv-text"><em>UP&amp;UP</em>, Graduate Exhibition, Fine Arts School Affiliated to China Central Academy of Fine Arts, Beijing, China</div>
+    </div>
+
+    <div class="cv-category">In Development</div>
+    <div class="cv-entry">
+      <div class="cv-year">2025</div>
+      <div class="cv-text"><em>Thriving in the Precariat</em>, artist book</div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-year">2024–</div>
+      <div class="cv-text"><em>Grok, Is This True?</em></div>
+    </div>
+
   </div>
 
 </div>
 
-<div class="work-nav">
-  <a class="work-nav-item prev" href="pedia-2.html">
-    <div class="work-nav-label">← Previous</div>
-    <div class="work-nav-title">Pedia 2</div>
-  </a>
-  <a class="work-nav-item next" href="dont-understand-me.html">
-    <div class="work-nav-label">Next →</div>
-    <div class="work-nav-title">Don't Understand Me…</div>
-  </a>
-</div>
-
-<footer>
-  <div class="footer-copy">© Sheng Shi 2025. All rights reserved</div>
-</footer>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
-  <img id="lb-img" src="" alt="">
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function openLightbox(src) {
-  document.getElementById('lb-img').src = src;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-  docume
+</body>
+</html>

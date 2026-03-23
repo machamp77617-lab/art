@@ -16,7 +16,7 @@ a { text-decoration: none; color: inherit; }
   --white: #ffffff;
   --black: #000000;
   --grey: #888;
-  --light-grey: #ddd;
+  --light-grey: #e0e0e0;
   --serif: 'EB Garamond', Georgia, serif;
   --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -26,7 +26,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--white);
   color: var(--black);
-  font-family: var(--serif);
+  font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -76,7 +76,7 @@ nav {
   width: 100%;
   aspect-ratio: 16/9;
   overflow: hidden;
-  background: #e8e4de;
+  background: #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,7 +85,7 @@ nav {
 .placeholder {
   width: 100%;
   height: 100%;
-  background: #e8e4de;
+  background: #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,7 +140,7 @@ nav {
 }
 
 .work-list-item:hover {
-  background: #fafafa;
+  background: #f8f8f8;
 }
 
 .work-list-item:hover .work-list-title {
@@ -273,7 +273,7 @@ nav {
 }
 
 .cv-text {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -307,10 +307,10 @@ nav {
   transition: background 0.15s;
 }
 
-.news-item:hover { background: #fafafa; }
+.news-item:hover { background: #f8f8f8; }
 
 .news-item-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1rem;
   font-style: italic;
   line-height: 1.4;
@@ -481,7 +481,7 @@ footer {
   <a class="nav-logo" href="#">Sheng Shi</a>
   <div class="nav-right">
     <a href="#works">Works</a>
-    <a href="#about" class="hide-sm">About</a>
+    <a href="about.html" class="hide-sm">About</a>
     <a href="/cdn-cgi/l/email-protection#67140f02090027021f060a170b024904080a">Contact</a>
   </div>
 </nav>
