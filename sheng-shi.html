@@ -121,6 +121,46 @@ nav {
   letter-spacing: 0.03em;
 }
 
+
+/* ─── WORK LIST ─── */
+.work-list {
+  list-style: none;
+  border-left: 1px solid var(--light-grey);
+}
+
+.work-list-item {
+  padding: 1.1rem 2rem;
+  border-right: 1px solid var(--light-grey);
+  border-bottom: 1px solid var(--light-grey);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.work-list-item:hover {
+  background: #fafafa;
+}
+
+.work-list-item:hover .work-list-title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.work-list-title {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.work-list-meta {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+}
+
 /* ─── SECTION HEADER ─── */
 .section-header {
   padding: 2rem 2rem 0;
@@ -147,73 +187,6 @@ nav {
 }
 
 .section-header a:hover { color: var(--black); }
-
-/* ─── WORKS GRID ─── */
-.works-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-left: 1px solid var(--light-grey);
-}
-
-.work-item {
-  border-right: 1px solid var(--light-grey);
-  border-bottom: 1px solid var(--light-grey);
-  cursor: pointer;
-}
-
-.work-item:hover .work-img { filter: brightness(0.96); }
-
-.work-img {
-  overflow: hidden;
-  background: #f0ece6;
-  transition: filter 0.3s;
-}
-
-.work-img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-
-.work-item:hover .work-img img { transform: scale(1.03); }
-
-.work-img.tall { aspect-ratio: 3/4; }
-
-
-.work-item.wide { grid-column: span 2; }
-
-
-.work-caption {
-  padding: 0.9rem 1rem 1rem;
-}
-
-.work-caption h3 {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.3;
-}
-
-.work-caption h3.named {
-  font-style: normal;
-  font-weight: 500;
-}
-
-.work-caption .year {
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  color: var(--grey);
-  margin-top: 0.25rem;
-}
-
-.work-caption .medium {
-  font-family: var(--sans);
-  font-size: 0.65rem;
-  color: #aaa;
-  margin-top: 0.1rem;
-  line-height: 1.4;
-}
 
 /* ─── PROJECT DIVIDER ─── */
 .project-divider {
@@ -536,193 +509,85 @@ footer {
     <span>2023–2025</span>
   </div>
 
-  <div class="works-grid">
-
-    <div class="work-item wide" onclick="goTo('tourist-map')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="tourist-map-1.jpg" alt="Tourist Map">
-      </div>
-      <div class="work-caption">
-        <h3 class="named">Tourist Map</h3>
-        <div class="year">2025</div>
-        <div class="medium">London tourist maps, 95.1 × 55.5 cm</div>
-      </div>
+  <div class="work-list">
+    <div class="work-list-item" onclick="goTo('tourist-map')">
+      <div class="work-list-title">Tourist Map</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
-    <div class="work-item" onclick="goTo('you-are-here')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="you-are-here-1.jpg" alt="You Are Here">
-      </div>
-      <div class="work-caption">
-        <h3 class="named">You Are Here</h3>
-        <div class="year">2025</div>
-        <div class="medium">London map, red stickers, perforated suspension</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('you-are-here')">
+      <div class="work-list-title">You Are Here</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
-    <div class="work-item wide" onclick="goTo('due-process')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="due-process-1.jpg" alt="Due Process">
-      </div>
-      <div class="work-caption">
-        <h3 class="named">Due Process</h3>
-        <div class="year">2025</div>
-        <div class="medium">12 modified legal documents in frame</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('in-stock')">
+      <div class="work-list-title">In Stock</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
-    <div class="work-item" onclick="goTo('in-stock')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="in-stock-1.jpg" alt="In Stock">
-      </div>
-      <div class="work-caption">
-        <h3>In Stock</h3>
-        <div class="year">2025</div>
-        <div class="medium">Modified London tourist maps, covert placement</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('due-process')">
+      <div class="work-list-title">Due Process</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
-    <div class="work-item" onclick="goTo('point-of-distribution')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="point-of-distribution-5.jpg" alt="Point of Distribution">
-      </div>
-      <div class="work-caption">
-        <h3 class="named">Point of Distribution</h3>
-        <div class="year">2025</div>
-        <div class="medium">Newspaper rack, 59 × 41 × 112 cm</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('point-of-distribution')">
+      <div class="work-list-title">Point of Distribution</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
-    <div class="work-item" onclick="goTo('i-love-ldn')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="i-love-ldn-1.jpg" alt="I LDN">
-      </div>
-      <div class="work-caption">
-        <h3 class="named">I ♥ LDN</h3>
-        <div class="year">2025</div>
-        <div class="medium">Photography, digital print, 29.7 × 42 cm</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('i-love-ldn')">
+      <div class="work-list-title">I ♥ LDN</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
-    <div class="work-item" onclick="goTo('reference')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="reference-1.jpg" alt="Reference">
-      </div>
-      <div class="work-caption">
-        <h3>Reference</h3>
-        <div class="year">2025</div>
-        <div class="medium">Two globes, ø25 cm / ø30 cm</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('reference')">
+      <div class="work-list-title">Reference</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
   </div>
 
-    <!-- PROJECT 2 -->
+  <!-- PROJECT 2 -->
   <div class="project-divider">
     <h3>Grok, Is This True?</h3>
     <span>2025–26</span>
   </div>
 
-  <div class="works-grid">
-
-    <div class="work-item wide" onclick="goTo('have-been-thinking')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="have-been-thinking-3.jpg" alt="Have Been Thinking Deeply for 24 Hours">
-      </div>
-      <div class="work-caption">
-        <h3 class="named">Have Been Thinking Deeply for 24 Hours</h3>
-        <div class="year">2025</div>
-        <div class="medium">Two artist's books, two hand-carved wooden bible stands, glass table</div>
-      </div>
+  <div class="work-list">
+    <div class="work-list-item" onclick="goTo('have-been-thinking')">
+      <div class="work-list-title">Have Been Thinking Deeply for 24 Hours</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
-    <div class="work-item" onclick="goTo('in-the-history-section')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="in-the-history-section-1.jpg" alt="In the History Section">
-      </div>
-      <div class="work-caption">
-        <h3 class="named">In the History Section</h3>
-        <div class="year">2025</div>
-        <div class="medium">AI-generated book, covert placement in university library</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('in-the-history-section')">
+      <div class="work-list-title">In the History Section</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
-    <div class="work-item" onclick="goTo('top-secret-files')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="top-secret-1.jpg" alt="Top Secret Files">
-      </div>
-      <div class="work-caption">
-        <h3 class="named">Top Secret Files</h3>
-        <div class="year">2025</div>
-        <div class="medium">Safe, 34.7 × 19 × 24.7 cm, encrypted external drive</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('top-secret-files')">
+      <div class="work-list-title">Top Secret Files</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
-    <div class="work-item" onclick="goTo('pedia')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="pedia-1.jpg" alt="Pedia">
-      </div>
-      <div class="work-caption">
-        <h3>Pedia</h3>
-        <div class="year">2025</div>
-        <div class="medium">Two acetate prints, hanging installation</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('pedia')">
+      <div class="work-list-title">Pedia</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
-    <div class="work-item wide" onclick="goTo('pedia-2')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="pedia-2-1.jpg" alt="Pedia 2">
-      </div>
-      <div class="work-caption">
-        <h3>Pedia 2</h3>
-        <div class="year">2025</div>
-        <div class="medium">Acetate print, 35 × 45 cm, glass plate</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('pedia-2')">
+      <div class="work-list-title">Pedia 2</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
   </div>
 
-    <!-- PROJECT 3 -->
+  <!-- PROJECT 3 -->
   <div class="project-divider">
     <h3>XXXXXX</h3>
     <span>2023–2025</span>
   </div>
 
-  <div class="works-grid">
-
-    <div class="work-item wide" onclick="goTo('preserved-protected-prevented')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="preserved-2.jpg" alt="Preserved, Protected, Prevented">
-      </div>
-      <div class="work-caption">
-        <h3 class="named">Preserved, Protected, Prevented</h3>
-        <div class="year">2025</div>
-        <div class="medium">64 evidence bags, 26 × 19 cm each, white puzzle pieces</div>
-      </div>
+  <div class="work-list">
+    <div class="work-list-item" onclick="goTo('preserved-protected-prevented')">
+      <div class="work-list-title">Preserved, Protected, Prevented</div>
+      <div class="work-list-meta">2025</div>
     </div>
-
-    <div class="work-item" onclick="goTo('dont-understand-me')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="dont-understand-me-1.jpg" alt="Don't Understand Me">
-      </div>
-      <div class="work-caption">
-        <h3>Don't Understand Me, Don't Ignore Me, Just Exist Here</h3>
-        <div class="year">2024</div>
-        <div class="medium">Canvas, imitated introductory board, electronic textile printing</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('dont-understand-me')">
+      <div class="work-list-title">Don't Understand Me, Don't Ignore Me, Just Exist Here</div>
+      <div class="work-list-meta">2024</div>
     </div>
-
-    <div class="work-item wide" onclick="goTo('i-dont-want-subversion')" style="cursor:pointer">
-      <div class="work-img">
-        <img src="i-dont-want-subversion-2.jpg" alt="I Don't Want Subversion">
-      </div>
-      <div class="work-caption">
-        <h3>I Don't Want Subversion from 100 Years Ago,<br>Who Is the Contemporary Artist?</h3>
-        <div class="year">2024</div>
-        <div class="medium">Canvas, imitated introductory board, offset printing of textiles banner</div>
-      </div>
+    <div class="work-list-item" onclick="goTo('i-dont-want-subversion')">
+      <div class="work-list-title">I Don't Want Subversion from 100 Years Ago, Who Is the Contemporary Artist?</div>
+      <div class="work-list-meta">2024</div>
     </div>
-
   </div>
 
 </section>
