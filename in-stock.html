@@ -325,6 +325,52 @@ footer {
   .breadcrumb { padding: 1rem; }
   .work-nav-item { padding: 1rem; }
 }
+
+/* ─── CAROUSEL ─── */
+.carousel { position: relative; }
+.carousel-track { overflow: hidden; }
+.carousel-slide { display: none; }
+.carousel-slide.active { display: block; }
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: zoom-in;
+}
+.carousel-caption {
+  padding: 0.7rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--grey);
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--light-grey);
+}
+.carousel-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  padding: 0;
+  transition: color 0.2s;
+}
+.carousel-btn:hover { color: var(--grey); }
+.carousel-btn:disabled { color: #ccc; cursor: default; }
+.carousel-counter {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+}
+
 </style>
 </head>
 <body>
@@ -376,7 +422,7 @@ footer {
     <div class="work-images-label">Images</div>
     <div class="carousel">
       <div class="carousel-track">
-        <div class="carousel-slide">
+        <div class="carousel-slide active">
           <img src="in-stock-1.jpg" alt="" onclick="openLightbox('in-stock-1.jpg')">
           <div class="carousel-caption">Modified tourist map</div>
         </div>
@@ -414,7 +460,7 @@ footer {
   <img id="lb-img" src="" alt="">
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 function openLightbox(src) {
   document.getElementById('lb-img').src = src;
   document.getElementById('lightbox').classList.add('open');
@@ -422,4 +468,33 @@ function openLightbox(src) {
 }
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
-  docume
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Carousel
+(function() {
+  var slides = document.querySelectorAll('.carousel-slide');
+  var counter = document.getElementById('carousel-counter');
+  var prevBtn = document.getElementById('carousel-prev');
+  var nextBtn = document.getElementById('carousel-next');
+  var current = 0;
+  var total = slides.length;
+  if (!total) return;
+  function show(i) {
+    for (var j = 0; j < slides.length; j++) slides[j].classList.remove('active');
+    slides[i].classList.add('active');
+    if (counter) counter.textContent = (i + 1) + ' / ' + total;
+    if (prevBtn) prevBtn.disabled = (i === 0);
+    if (nextBtn) nextBtn.disabled = (i === total - 1);
+  }
+  if (prevBtn) prevBtn.onclick = function() { if (current > 0) show(--current); };
+  if (nextBtn) nextBtn.onclick = function() { if (current < total - 1) show(++current); };
+  show(0);
+})();
+</script>
+
+</body>
+</html>
