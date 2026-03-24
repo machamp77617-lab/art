@@ -30,7 +30,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── NAV ─── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -67,14 +66,17 @@ nav {
 
 .nav-right a:hover { color: var(--grey); }
 
-/* ─── SECTION HEADER ─── */
+#works {
+  margin-top: 48px;
+}
+
 .section-header {
   padding: 2rem 2rem 0;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  border-bottom: 1px solid var(--light-grey);
   padding-bottom: 1rem;
+  border-bottom: 1px solid var(--light-grey);
 }
 
 .section-header h2 {
@@ -85,45 +87,79 @@ nav {
   font-weight: 400;
 }
 
-.section-header a {
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  color: var(--grey);
-  transition: color 0.2s;
+.project-block {
+  margin-top: 4rem;
 }
 
-.section-header a:hover { color: var(--black); }
+.project-block:first-of-type {
+  margin-top: 0;
+}
 
-/* ─── PROJECT DIVIDER ─── */
-.project-divider {
-  margin: 0;
-  border: none;
-  border-top: 3px solid var(--black);
-  padding: 2rem 2rem 1rem;
+.project-header {
+  padding: 1.5rem 2rem 1rem;
+  border-top: 2px solid var(--black);
+  border-bottom: 1px solid var(--light-grey);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  border-bottom: 1px solid var(--light-grey);
-  margin-top: 3rem;
 }
 
-.project-divider h3 {
+.project-header h3 {
   font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 600;
 }
 
-.project-divider span {
+.project-header span {
   font-family: var(--sans);
   font-size: 0.68rem;
   color: var(--grey);
 }
 
-/* ─── ABOUT ─── */
+.work-list {
+  border-left: 1px solid var(--light-grey);
+}
+
+.work-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.4rem 2rem;
+  border-right: 1px solid var(--light-grey);
+  border-bottom: 1px solid var(--light-grey);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.work-item:hover {
+  background: #f8f8f8;
+}
+
+.work-item:hover .work-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.work-name {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.work-year {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--grey);
+  flex-shrink: 0;
+  margin-left: 2rem;
+}
+
 .about-section {
-  border-top: 1px solid var(--light-grey);
+  margin-top: 4rem;
+  border-top: 2px solid var(--black);
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -143,10 +179,8 @@ nav {
 }
 
 .about-left p {
-  font-family: var(--serif);
-  font-size: 1.05rem;
+  font-size: 1rem;
   line-height: 1.7;
-  font-weight: 400;
   max-width: 480px;
 }
 
@@ -163,27 +197,6 @@ nav {
   margin-bottom: 2rem;
 }
 
-.cv-entry {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--light-grey);
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 1rem;
-}
-
-.cv-year {
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  color: var(--grey);
-  padding-top: 0.1rem;
-}
-
-.cv-text {
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
 .cv-category {
   font-family: var(--sans);
   font-size: 0.63rem;
@@ -195,48 +208,31 @@ nav {
 
 .cv-category:first-of-type { padding-top: 0; }
 
-/* ─── NEWS ─── */
-.news-section {
-  border-top: 1px solid var(--light-grey);
-}
-
-.news-list { list-style: none; }
-
-.news-item {
-  padding: 1.1rem 2rem;
+.cv-entry {
+  padding: 0.7rem 0;
   border-bottom: 1px solid var(--light-grey);
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
-  align-items: start;
-  cursor: pointer;
-  transition: background 0.15s;
+  grid-template-columns: 80px 1fr;
+  gap: 1rem;
 }
 
-.news-item:hover { background: #f8f8f8; }
-
-.news-item-title {
-  font-family: var(--sans);
-  font-size: 1rem;
-  font-style: italic;
-  line-height: 1.4;
-}
-
-.news-item-date {
+.cv-year {
   font-family: var(--sans);
   font-size: 0.68rem;
   color: var(--grey);
-  white-space: nowrap;
-  padding-top: 0.15rem;
 }
 
-/* ─── FOOTER ─── */
+.cv-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 footer {
   padding: 2rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   border-top: 1px solid var(--light-grey);
+  margin-top: 4rem;
 }
 
 .footer-copy {
@@ -245,311 +241,122 @@ footer {
   color: var(--grey);
 }
 
-.footer-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.footer-links a {
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  color: var(--grey);
-  transition: color 0.2s;
-}
-
-.footer-links a:hover { color: var(--black); }
-
-/* ─── LIGHTBOX ─── */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.93);
-  z-index: 9000;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem;
-}
-
-.lightbox.open { display: flex; }
-
-.lightbox-inner {
-  position: relative;
-  max-width: 80vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-}
-
-.lightbox-img-wrap {
-  width: 100%;
-  max-height: 70vh;
-  background: #1a1a1a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
-  min-width: 500px;
-}
-
-.lightbox-img-wrap img {
-  max-width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-}
-
-.lightbox-placeholder {
-  width: 100%;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #1a1a1a;
-  min-width: 500px;
-}
-
-.lightbox-placeholder span {
-  font-family: var(--sans);
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  color: #444;
-  text-transform: uppercase;
-}
-
-.lightbox-text {
-  color: white;
-  text-align: left;
-  width: 100%;
-}
-
-.lightbox-text h3 {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.2rem;
-  font-weight: 400;
-  margin-bottom: 0.4rem;
-}
-
-.lightbox-text .lb-meta {
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.45);
-  margin-bottom: 1rem;
-}
-
-.lightbox-text .lb-desc {
-  font-family: var(--serif);
-  font-size: 0.9rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.75);
-  max-width: 600px;
-}
-
-.lightbox-close {
-  position: fixed;
-  top: 1.5rem; right: 2rem;
-  background: none; border: none;
-  color: white; font-family: var(--sans);
-  font-size: 1rem; cursor: pointer;
-  opacity: 0.5; transition: opacity 0.2s;
-  z-index: 9001; letter-spacing: 0.1em;
-}
-
-.lightbox-close:hover { opacity: 1; }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 900px) {
-  .works-grid { grid-template-columns: repeat(2, 1fr); }
-  .work-item.wide { grid-column: span 2; }
-  .about-section { grid-template-columns: 1fr; }
-  .about-left { border-right: none; border-bottom: 1px solid var(--light-grey); }
-  .lightbox-img-wrap, .lightbox-placeholder { min-width: 300px; }
-}
-
-@media (max-width: 600px) {
-  .works-grid { grid-template-columns: 1fr; }
-  .work-item.wide { grid-column: 1; }
+@media (max-width: 768px) {
   nav { padding: 0 1rem; }
   .nav-right { gap: 1.2rem; }
-  .nav-right a.hide-sm { display: none; }
-  .hero-caption { flex-direction: column; gap: 0.3rem; }
-  .lightbox { padding: 1rem; }
-  .lightbox-inner { max-width: 95vw; }
+  .project-header, .work-item, .section-header { padding-left: 1rem; padding-right: 1rem; }
+  .about-section { grid-template-columns: 1fr; }
+  .about-left { border-right: none; border-bottom: 1px solid var(--light-grey); padding: 2rem 1rem; }
+  .about-right { padding: 2rem 1rem; }
 }
 
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">Sheng Shi</a>
+  <a class="nav-logo" href="sheng-shi.html">Sheng Shi</a>
   <div class="nav-right">
     <a href="#works">Works</a>
-    <a href="about.html" class="hide-sm">About</a>
-    <a href="/cdn-cgi/l/email-protection#67140f02090027021f060a170b024904080a">Contact</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </div>
 </nav>
 
-<!-- HERO -->
-
-<!-- WORKS -->
 <section id="works">
-  <div class="section-header">
-    <h2>Works</h2>
-  </div>
 
-  <!-- PROJECT 1 -->
-  <div class="project-divider" style="margin-top:0; border-top: 3px solid var(--black);">
-    <h3>Point of Interest</h3>
-    <span>2023–2025</span>
-  </div>
-
-  <div class="work-list">
-    <div class="work-list-item" onclick="goTo('tourist-map')">
-      <div class="work-list-title">Tourist Map</div>
-      <div class="work-list-meta">2025</div>
+  <div class="project-block">
+    <div class="project-header">
+      <h3>Point of Interest</h3>
+      <span>2023–2025</span>
     </div>
-    <div class="work-list-item" onclick="goTo('you-are-here')">
-      <div class="work-list-title">You Are Here</div>
-      <div class="work-list-meta">2025</div>
-    </div>
-    <div class="work-list-item" onclick="goTo('in-stock')">
-      <div class="work-list-title">In Stock</div>
-      <div class="work-list-meta">2025</div>
-    </div>
-    <div class="work-list-item" onclick="goTo('due-process')">
-      <div class="work-list-title">Due Process</div>
-      <div class="work-list-meta">2025</div>
-    </div>
-    <div class="work-list-item" onclick="goTo('point-of-distribution')">
-      <div class="work-list-title">Point of Distribution</div>
-      <div class="work-list-meta">2025</div>
-    </div>
-    <div class="work-list-item" onclick="goTo('i-love-ldn')">
-      <div class="work-list-title">I ♥ LDN</div>
-      <div class="work-list-meta">2025</div>
-    </div>
-    <div class="work-list-item" onclick="goTo('reference')">
-      <div class="work-list-title">Reference</div>
-      <div class="work-list-meta">2025</div>
+    <div class="work-list">
+      <div class="work-item" onclick="goTo('tourist-map')">
+        <span class="work-name">Tourist Map</span>
+        <span class="work-year">2025</span>
+      </div>
+      <div class="work-item" onclick="goTo('you-are-here')">
+        <span class="work-name">You Are Here</span>
+        <span class="work-year">2025</span>
+      </div>
+      <div class="work-item" onclick="goTo('in-stock')">
+        <span class="work-name">In Stock</span>
+        <span class="work-year">2025</span>
+      </div>
+      <div class="work-item" onclick="goTo('due-process')">
+        <span class="work-name">Due Process</span>
+        <span class="work-year">2025</span>
+      </div>
+      <div class="work-item" onclick="goTo('point-of-distribution')">
+        <span class="work-name">Point of Distribution</span>
+        <span class="work-year">2025</span>
+      </div>
+      <div class="work-item" onclick="goTo('i-love-ldn')">
+        <span class="work-name">I ♥ LDN</span>
+        <span class="work-year">2025</span>
+      </div>
+      <div class="work-item" onclick="goTo('reference')">
+        <span class="work-name">Reference</span>
+        <span class="work-year">2025</span>
+      </div>
     </div>
   </div>
 
-  <!-- PROJECT 2 -->
-  <div class="project-divider">
-    <h3>Grok, Is This True?</h3>
-    <span>2025–26</span>
+  <div class="project-block">
+    <div class="project-header">
+      <h3>Grok, Is This True?</h3>
+      <span>2025–26</span>
+    </div>
+    <div class="work-list">
+      <div class="work-item" onclick="goTo('have-been-thinking')">
+        <span class="work-name">Have Been Thinking Deeply for 24 Hours</span>
+        <span class="work-year">2025</span>
+      </div>
+      <div class="work-item" onclick="goTo('in-the-history-section')">
+        <span class="work-name">In the History Section</span>
+        <span class="work-year">2025</span>
+      </div>
+      <div class="work-item" onclick="goTo('top-secret-files')">
+        <span class="work-name">Top Secret Files</span>
+        <span class="work-year">2025</span>
+      </div>
+      <div class="work-item" onclick="goTo('pedia')">
+        <span class="work-name">Pedia</span>
+        <span class="work-year">2025</span>
+      </div>
+      <div class="work-item" onclick="goTo('pedia-2')">
+        <span class="work-name">Pedia 2</span>
+        <span class="work-year">2025</span>
+      </div>
+    </div>
   </div>
 
-  <div class="work-list">
-    <div class="work-list-item" onclick="goTo('have-been-thinking')">
-      <div class="work-list-title">Have Been Thinking Deeply for 24 Hours</div>
-      <div class="work-list-meta">2025</div>
+  <div class="project-block">
+    <div class="project-header">
+      <h3>XXXXXX</h3>
+      <span>2023–2025</span>
     </div>
-    <div class="work-list-item" onclick="goTo('in-the-history-section')">
-      <div class="work-list-title">In the History Section</div>
-      <div class="work-list-meta">2025</div>
-    </div>
-    <div class="work-list-item" onclick="goTo('top-secret-files')">
-      <div class="work-list-title">Top Secret Files</div>
-      <div class="work-list-meta">2025</div>
-    </div>
-    <div class="work-list-item" onclick="goTo('pedia')">
-      <div class="work-list-title">Pedia</div>
-      <div class="work-list-meta">2025</div>
-    </div>
-    <div class="work-list-item" onclick="goTo('pedia-2')">
-      <div class="work-list-title">Pedia 2</div>
-      <div class="work-list-meta">2025</div>
-    </div>
-  </div>
-
-  <!-- PROJECT 3 -->
-  <div class="project-divider">
-    <h3>XXXXXX</h3>
-    <span>2023–2025</span>
-  </div>
-
-  <div class="work-list">
-    <div class="work-list-item" onclick="goTo('preserved-protected-prevented')">
-      <div class="work-list-title">Preserved, Protected, Prevented</div>
-      <div class="work-list-meta">2025</div>
-    </div>
-    <div class="work-list-item" onclick="goTo('dont-understand-me')">
-      <div class="work-list-title">Don't Understand Me, Don't Ignore Me, Just Exist Here</div>
-      <div class="work-list-meta">2024</div>
-    </div>
-    <div class="work-list-item" onclick="goTo('i-dont-want-subversion')">
-      <div class="work-list-title">I Don't Want Subversion from 100 Years Ago, Who Is the Contemporary Artist?</div>
-      <div class="work-list-meta">2024</div>
+    <div class="work-list">
+      <div class="work-item" onclick="goTo('preserved-protected-prevented')">
+        <span class="work-name">Preserved, Protected, Prevented</span>
+        <span class="work-year">2025</span>
+      </div>
+      <div class="work-item" onclick="goTo('dont-understand-me')">
+        <span class="work-name">Don't Understand Me, Don't Ignore Me, Just Exist Here</span>
+        <span class="work-year">2024</span>
+      </div>
+      <div class="work-item" onclick="goTo('i-dont-want-subversion')">
+        <span class="work-name">I Don't Want Subversion from 100 Years Ago, Who Is the Contemporary Artist?</span>
+        <span class="work-year">2024</span>
+      </div>
     </div>
   </div>
 
 </section>
 
-<!-- ABOUT -->
-<section class="about-section" id="about">
-  <div class="about-left">
-    <h2>Profile</h2>
-    <p>Sheng Shi (b. 2003, Jilin, China) is a conceptual artist whose practice examines how global platform systems advertising, AI, data infrastructure reshape perception, knowledge production, and everyday life. Working across installation, intervention, printed matter, and modified documents, the work operates between critique and complicity: acknowledging dependency on the systems it examines.</p>
-    <br>
-    <p>Born in Guangzhou, raised across China and the United Kingdom, Sheng Shi works bilingually and cross-culturally, tracing how the same platform logics manifest differently across contexts. Dyslexia has shaped a particular attentiveness to visual environments and the attention economy.</p>
-    <br>
-    <p>Sheng Shi studied at the Fine Arts School Affiliated to China Central Academy of Fine Arts, Beijing (2019 2022), and is completing a BA Fine Art (Extension) at Goldsmiths, University of London (2022 2025).</p>
-  </div>
-  <div class="about-right">
-    <h2>Selected CV</h2>
-
-    <div class="cv-category">Education</div>
-    <div class="cv-entry">
-      <div class="cv-year">2022 25</div>
-      <div class="cv-text">BA (Hons) Fine Art (Extension), Goldsmiths, University of London, London, UK</div>
-    </div>
-    <div class="cv-entry">
-      <div class="cv-year">2019 22</div>
-      <div class="cv-text">Art Foundation Programme, Fine Arts School Affiliated to China Central Academy of Fine Arts, Beijing, China</div>
-    </div>
-
-    <div class="cv-category">Solo Exhibitions</div>
-    <div class="cv-entry">
-      <div class="cv-year">2025</div>
-      <div class="cv-text"><em>Clear Skies after Night</em>, Private Project Space, Lewisham, London, UK</div>
-    </div>
-
-    <div class="cv-category">Group Exhibitions</div>
-    <div class="cv-entry">
-      <div class="cv-year">2023</div>
-      <div class="cv-text">BA Fine Art Extension Degree Show, Goldsmiths, University of London, London, UK</div>
-    </div>
-    <div class="cv-entry">
-      <div class="cv-year">2022</div>
-      <div class="cv-text"><em>UP&amp;UP</em>, Graduate Exhibition, Fine Arts School Affiliated to China Central Academy of Fine Arts, Beijing, China</div>
-    </div>
-
-    <div class="cv-category">In Development</div>
-    <div class="cv-entry">
-      <div class="cv-year">2025</div>
-      <div class="cv-text"><em>Thriving in the Precariat</em>, artist book</div>
-    </div>
-    <div class="cv-entry">
-      <div class="cv-year">2024 </div>
-      <div class="cv-text"><em>Grok, Is This True?</em></div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-copy">© Sheng Shi 2025. All rights reserved</div>
-  <div class="footer-links">
-    <a href="/cdn-cgi/l/email-protection#65160d000b0225001d04081509004b060a08">Contact</a>
-  </div>
 </footer>
-
 
 <script>
 function goTo(slug) {
