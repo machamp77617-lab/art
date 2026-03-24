@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pedia 2 Sheng Shi</title>
+<title>Practice — Sheng Shi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
+
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
@@ -371,88 +372,142 @@ footer {
   color: var(--grey);
 }
 
+
+
+.practice-page {
+  margin-top: 48px;
+}
+
+.practice-header {
+  padding: 3rem 2rem 2rem;
+  border-bottom: 1px solid var(--light-grey);
+  max-width: 720px;
+}
+
+.practice-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 1.5rem;
+}
+
+.practice-title {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+.practice-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--light-grey);
+}
+
+.practice-text {
+  padding: 3rem 2rem 4rem;
+  border-right: 1px solid var(--light-grey);
+}
+
+.practice-text p {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.4em;
+}
+
+.practice-text p:last-child {
+  margin-bottom: 0;
+}
+
+.practice-images {
+  padding: 3rem 2rem 4rem;
+}
+
+.practice-images-label {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+@media (max-width: 768px) {
+  .practice-body { grid-template-columns: 1fr; }
+  .practice-text { border-right: none; border-bottom: 1px solid var(--light-grey); padding: 2rem 1rem; }
+  .practice-images { padding: 2rem 1rem; }
+  .practice-header { padding: 2rem 1rem; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="index.html">Sheng Shi</a>
+  <a class="nav-logo" href="sheng-shi.html">Sheng Shi</a>
   <div class="nav-right">
-    <a href="index.html#works">Works</a>
+    <a href="sheng-shi.html#works">Works</a>
     <a href="about.html">About</a>
     <a href="practice.html">Practice</a>
-    <a href="/cdn-cgi/l/email-protection#0a79626f646d4a6f726b677a666f24696567">Contact</a>
+    <a href="contact.html">Contact</a>
   </div>
 </nav>
 
-<div class="breadcrumb">
-  <a href="index.html">Sheng Shi</a>
-  <span>/</span>
-  <a href="index.html#works">Works</a>
-  <span>/</span>
-  <span>Grok, Is This True?</span>
-  <span>/</span>
-  <span>Pedia 2</span>
-</div>
-<div class="work-body">
+<div class="practice-page">
 
-  <div class="work-info">
-    <div class="work-project">Grok, Is This True?</div>
-    <h1 class="work-title ">Pedia 2</h1>
-
-    <div class="work-meta">
-      <div class="work-meta-row">
-        <div class="work-meta-label">Year</div>
-        <div class="work-meta-value">2025</div>
-      </div>
-      <div class="work-meta-row">
-        <div class="work-meta-label">Material</div>
-        <div class="work-meta-value">Acetate print, 35 × 45 cm, glass plate</div>
-      </div>
-      
-    </div>
-
-    <div class="work-desc">
-      <p>A diptych framed by "You are absolutely right" at the top and "GROK, IS THIS TRUE?" on a red banner at the bottom a closed loop from question to answer.</p>
-<p>The left panel displays Musk's tweet: "I will give them a bill if they change their name to Dickipedia." Below are meme collages from X. The right panel shows Grokipedia's George Floyd entry: "American man with lengthy criminal record..." After Floyd's death from police violence, the core right-wing strategy was emphasising his criminal record to justify his death. When this narrative is encoded into AI and formatted as encyclopaedia, it transforms from political opinion into "knowledge," from ideological position into "factual statement."</p>
-    </div>
+  <div class="practice-header">
+    <div class="practice-label">Practice Methodology</div>
+    <h1 class="practice-title">Amazon & Technofeudalism</h1>
   </div>
 
-    <div class="work-images">
-    <div class="work-images-label">Images</div>
-    <div class="carousel">
-      <div class="carousel-track">
-        <div class="carousel-slide active">
-          <img src="pedia-2-1.jpg" alt="" onclick="openLightbox('pedia-2-1.jpg')">
-          <div class="carousel-caption">Pedia 2, acetate print on glass plate</div>
+  <div class="practice-body">
+
+    <div class="practice-text">
+      <p>All the readymade materials for my works are purchased from Amazon, and I deliberately place Amazon delivery labels in hidden corners of each piece. This practice directly responds to the concept of technofeudalism.</p>
+      <p>Varoufakis argues that we are no longer living in capitalism but have entered a new form of feudalism. The lords are now platform companies like Amazon and Google. In medieval times, peasants had to farm on the lord's land and pay rent. Today, if you want to buy things, sell things, or simply exist, you must go through these platforms, paying a "toll" at every step. This is no longer a free market transaction but a relationship of dependency.</p>
+      <p>This feeling becomes particularly concrete in my own art practice. When I need materials, theoretically I could go to physical stores, but in reality? Amazon's network has spread too wide — logistics, warehousing, payment systems, even the cloud storage I use probably runs on AWS. Bypassing it becomes both inconvenient and uneconomical. This is the core of technofeudalism: you think you're making free choices, but you're actually operating within an ecosystem controlled by a single entity.</p>
+      <p>When I attach those delivery labels, there is a real contradiction. On one hand, I'm making this dependency relationship visible. Those labels hidden in the corners of the work function like an ingredients list, telling you that this object is constituted not just of glass or paper, but also by Amazon's logistics network. On the other hand, this gesture itself acknowledges that I cannot escape. I'm not claiming "I resist Amazon." I'm saying: look, even critique must be built with their materials.</p>
+      <p>These labels are intentionally hidden, not proudly displayed on the surface. You have to turn the work over, bend down, and look carefully to find them. This mirrors how technofeudalism operates — it doesn't rely on obvious coercion but quietly penetrates through convenience, efficiency, and the reality of "no alternative."</p>
+      <p>Medieval serfs had to provide both grain and labour service. We not only pay money but also "freely" provide behavioural data, which may be worth more than the products themselves. Even the tools you use to resist are provided by it.</p>
+    </div>
+
+    <div class="practice-images">
+      <div class="practice-images-label">Images</div>
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="carousel-slide active">
+            <img src="practice-4.jpg" alt="" onclick="openLightbox('practice-4.jpg')">
+            <div class="carousel-caption">Back of frame — Amazon delivery label preserved</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="practice-2.jpg" alt="" onclick="openLightbox('practice-2.jpg')">
+            <div class="carousel-caption">Bible stand underside — Amazon barcode</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="practice-1.jpg" alt="" onclick="openLightbox('practice-1.jpg')">
+            <div class="carousel-caption">Newspaper rack — Amazon delivery label detail</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="practice-3.jpg" alt="" onclick="openLightbox('practice-3.jpg')">
+            <div class="carousel-caption">Suspended map — Amazon label at corner</div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-prev">← Prev</button>
+          <span class="carousel-counter" id="carousel-counter"></span>
+          <button class="carousel-btn" id="carousel-next">Next →</button>
         </div>
       </div>
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="carousel-prev">← Prev</button>
-        <span class="carousel-counter" id="carousel-counter"></span>
-        <button class="carousel-btn" id="carousel-next">Next →</button>
-      </div>
     </div>
-  </div>
 
   </div>
 
 </div>
-
-<div class="work-nav">
-  <a class="work-nav-item prev" href="pedia.html">
-    <div class="work-nav-label">← Previous</div>
-    <div class="work-nav-title">Pedia</div>
-  </a>
-  <a class="work-nav-item next" href="preserved-protected-prevented.html">
-    <div class="work-nav-label">Next →</div>
-    <div class="work-nav-title">Preserved, Protected, Prevented</div>
-  </a>
-</div>
-
-<footer>
-  <div class="footer-copy">© Sheng Shi 2025. All rights reserved</div>
-</footer>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
