@@ -27,6 +27,7 @@ html, body {
 .splash {
   position: fixed;
   inset: 0;
+  height: 100dvh;
   background: #111;
 }
 
@@ -40,7 +41,7 @@ html, body {
   animation: fadeImg 2s ease 0.3s forwards;
 }
 
-/* dark overlay — subtle */
+/* dark overlay */
 .splash-overlay {
   position: absolute;
   inset: 0;
@@ -79,7 +80,7 @@ html, body {
   margin-top: 0.6rem;
 }
 
-/* CLICK HINT — bottom center */
+/* TAP/CLICK HINT — bottom center */
 .splash-hint {
   position: absolute;
   bottom: 2rem;
@@ -95,7 +96,7 @@ html, body {
   white-space: nowrap;
 }
 
-/* RIGHT NAV */
+/* RIGHT NAV — desktop only */
 .splash-nav {
   position: absolute;
   right: 0;
@@ -127,9 +128,7 @@ html, body {
   cursor: pointer;
 }
 
-.splash-nav a:hover {
-  color: #fff;
-}
+.splash-nav a:hover { color: #fff; }
 
 .splash-nav .nav-divider {
   width: 1px;
@@ -148,17 +147,14 @@ html, body {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
 @keyframes splashOut {
   from { opacity: 1; }
   to   { opacity: 0; }
@@ -166,10 +162,53 @@ html, body {
 
 /* MOBILE */
 @media (max-width: 600px) {
-  .splash-name { left: 1.5rem; bottom: 3rem; }
-  .splash-nav { width: 52px; gap: 2rem; }
-  .splash-nav a { font-size: 0.55rem; }
+  .splash-name {
+    left: 1.5rem;
+    bottom: 5rem;
+  }
+  .splash-hint {
+    bottom: 2.8rem;
+  }
+  .splash-nav {
+    display: none;
+  }
+  .splash-nav-mobile {
+    display: flex !important;
+  }
 }
+
+/* MOBILE BOTTOM NAV */
+.splash-nav-mobile {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  animation: fadeIn 1s ease 1.4s forwards;
+}
+
+.splash-nav-mobile a {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.splash-nav-mobile a:active { color: #fff; }
 
 </style>
 </head>
@@ -184,7 +223,7 @@ html, body {
     <p>Artist, London</p>
   </div>
 
-  <div class="splash-hint">Click anywhere to enter</div>
+  <div class="splash-hint" id="splash-hint">Click anywhere to enter</div>
 
   <nav class="splash-nav" onclick="event.stopPropagation()">
     <a href="sheng-shi.html#works">Works</a>
@@ -192,10 +231,46 @@ html, body {
     <a href="about.html">About</a>
     <a href="practice.html">Practice</a>
     <div class="nav-divider"></div>
-    <a href="/cdn-cgi/l/email-protection#bbc8d3ded5dcfbdec3dad6cbd7de95d8d4d6">Contact</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <nav class="splash-nav-mobile" ontouchstart="event.stopPropagation()" onclick="event.stopPropagation()">
+    <a href="sheng-shi.html#works">Works</a>
+    <a href="about.html">About</a>
+    <a href="practice.html">Practice</a>
+    <a href="contact.html">Contact</a>
   </nav>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Click anywhere (except nav) to enter
-  document.getElementById('splash').addEventListener('click', function() {
+<script>
+  // Update hint text for touch devices
+  if ('ontouchstart' in window) {
+    document.getElementById('splash-hint').textContent = 'Tap anywhere to enter';
+  }
+
+  function enterSite() {
+    var splash = document.getElementById('splash');
+    splash.classList.add('out');
+    setTimeout(function() {
+      window.location.href = 'sheng-shi.html';
+    }, 600);
+  }
+
+  var splash = document.getElementById('splash');
+
+  // Desktop click
+  splash.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') return;
+    enterSite();
+  });
+
+  // Mobile touch
+  splash.addEventListener('touchend', function(e) {
+    if (e.target.tagName === 'A') return;
+    e.preventDefault();
+    enterSite();
+  }, { passive: false });
+</script>
+
+</body>
+</html>
