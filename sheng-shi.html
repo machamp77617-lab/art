@@ -19,6 +19,7 @@ a { text-decoration: none; color: inherit; }
   --light-grey: #e0e0e0;
   --serif: 'EB Garamond', Georgia, serif;
   --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --sidebar-w: 220px;
 }
 
 html { scroll-behavior: smooth; }
@@ -30,6 +31,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* NAV */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -42,7 +44,6 @@ nav {
   height: 48px;
   border-bottom: 1px solid var(--light-grey);
 }
-
 .nav-logo {
   font-family: var(--sans);
   font-size: 0.75rem;
@@ -50,204 +51,167 @@ nav {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-
 .nav-right {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
-
 .nav-right a {
   font-family: var(--sans);
   font-size: 0.7rem;
   letter-spacing: 0.05em;
   transition: color 0.2s;
 }
-
 .nav-right a:hover { color: var(--grey); }
 
-#works {
+/* LAYOUT */
+.layout {
   margin-top: 48px;
-}
-
-.section-header {
-  padding: 2rem 2rem 0;
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--light-grey);
+  align-items: flex-start;
 }
 
-.section-header h2 {
+/* SIDEBAR */
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  position: sticky;
+  top: 48px;
+  height: calc(100vh - 48px);
+  overflow-y: auto;
+  border-right: 1px solid var(--light-grey);
+  padding: 2rem 0 4rem;
+}
+.sidebar::-webkit-scrollbar { display: none; }
+
+.sidebar-group {
+  margin-bottom: 2rem;
+}
+
+.sidebar-label {
   font-family: var(--sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-weight: 400;
+  color: var(--grey);
+  padding: 0 1.5rem 0.6rem;
 }
 
-.project-block {
-  margin-top: 4rem;
+.sidebar-item {
+  display: block;
+  padding: 0.3rem 1.5rem;
+  font-family: var(--serif);
+  font-size: 0.88rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--grey);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.sidebar-item:hover { color: var(--black); }
+.sidebar-item.active { color: var(--black); }
+
+/* MAIN CONTENT */
+.main {
+  flex: 1;
+  min-width: 0;
 }
 
-.project-block:first-of-type {
-  margin-top: 0;
+/* PROJECT SECTION */
+.project-section {
+  border-bottom: 2px solid var(--black);
 }
 
-.project-header {
-  padding: 1.5rem 2rem 1rem;
-  border-top: 2px solid var(--black);
+/* WORK ENTRY */
+.work-entry {
   border-bottom: 1px solid var(--light-grey);
+  cursor: pointer;
+}
+.work-entry:last-child { border-bottom: none; }
+.work-entry:hover .work-entry-image img { transform: scale(1.01); }
+
+.work-entry-image {
+  width: 100%;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+.work-entry-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.work-entry-meta {
+  padding: 1.2rem 2rem 1.4rem;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  border-top: 1px solid var(--light-grey);
+}
+.work-entry-name {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.35;
+}
+.work-entry-year {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  flex-shrink: 0;
+  margin-left: 2rem;
 }
 
-.project-header h3 {
+/* PROJECT LABEL row */
+.project-label-row {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--light-grey);
+  position: sticky;
+  top: 48px;
+  background: var(--white);
+  z-index: 5;
+}
+.project-label-row h3 {
   font-family: var(--sans);
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 600;
 }
-
-.project-header span {
+.project-label-row span {
   font-family: var(--sans);
   font-size: 0.68rem;
   color: var(--grey);
 }
 
-.work-list {
-  border-left: 1px solid var(--light-grey);
-}
-
-.work-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 1.4rem 2rem;
-  border-right: 1px solid var(--light-grey);
-  border-bottom: 1px solid var(--light-grey);
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.work-item:hover {
-  background: #f8f8f8;
-}
-
-.work-item:hover .work-name {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.work-name {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  font-style: italic;
-  font-weight: 400;
-}
-
-.work-year {
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  color: var(--grey);
-  flex-shrink: 0;
-  margin-left: 2rem;
-}
-
-.about-section {
-  margin-top: 4rem;
-  border-top: 2px solid var(--black);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.about-left {
-  padding: 3rem 2rem;
-  border-right: 1px solid var(--light-grey);
-}
-
-.about-left h2 {
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 400;
-  margin-bottom: 2rem;
-}
-
-.about-left p {
-  font-size: 1rem;
-  line-height: 1.7;
-  max-width: 480px;
-}
-
-.about-right {
-  padding: 3rem 2rem;
-}
-
-.about-right h2 {
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 400;
-  margin-bottom: 2rem;
-}
-
-.cv-category {
-  font-family: var(--sans);
-  font-size: 0.63rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--grey);
-  padding: 1.5rem 0 0.5rem;
-}
-
-.cv-category:first-of-type { padding-top: 0; }
-
-.cv-entry {
-  padding: 0.7rem 0;
-  border-bottom: 1px solid var(--light-grey);
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 1rem;
-}
-
-.cv-year {
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  color: var(--grey);
-}
-
-.cv-text {
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
+/* FOOTER */
 footer {
-  padding: 2rem;
+  padding: 2rem 2rem 2rem calc(var(--sidebar-w) + 2rem);
   display: flex;
   justify-content: space-between;
   border-top: 1px solid var(--light-grey);
-  margin-top: 4rem;
+  margin-top: 0;
 }
-
 .footer-copy {
   font-family: var(--sans);
   font-size: 0.68rem;
   color: var(--grey);
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
+  :root { --sidebar-w: 0px; }
   nav { padding: 0 1rem; }
   .nav-right { gap: 1.2rem; }
-  .project-header, .work-item, .section-header { padding-left: 1rem; padding-right: 1rem; }
-  .about-section { grid-template-columns: 1fr; }
-  .about-left { border-right: none; border-bottom: 1px solid var(--light-grey); padding: 2rem 1rem; }
-  .about-right { padding: 2rem 1rem; }
+  .sidebar { display: none; }
+  .work-entry-meta { padding: 1rem; }
+  .project-label-row { padding: 0.8rem 1rem; }
+  footer { padding: 2rem 1rem; }
 }
 
 </style>
@@ -257,119 +221,232 @@ footer {
 <nav>
   <a class="nav-logo" href="sheng-shi.html">Sheng Shi</a>
   <div class="nav-right">
-    <a href="#works">Works</a>
+    <a href="#">Works</a>
     <a href="practice.html">Practice</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </div>
 </nav>
 
-<section id="works">
+<div class="layout">
 
-  <div class="project-block">
-    <div class="project-header">
-      <h3>Point of Interest</h3>
-      <span>2023–2025</span>
-    </div>
-    <div class="work-list">
-      <div class="work-item" onclick="goTo('tourist-map')">
-        <span class="work-name">Tourist Map</span>
-        <span class="work-year">2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('you-are-here')">
-        <span class="work-name">You Are Here</span>
-        <span class="work-year">2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('in-stock')">
-        <span class="work-name">In Stock</span>
-        <span class="work-year">2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('due-process')">
-        <span class="work-name">Due Process</span>
-        <span class="work-year">2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('point-of-distribution')">
-        <span class="work-name">Point of Distribution</span>
-        <span class="work-year">2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('i-love-ldn')">
-        <span class="work-name">I ♥ LDN</span>
-        <span class="work-year">2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('reference')">
-        <span class="work-name">Reference</span>
-        <span class="work-year">2025</span>
-      </div>
-    </div>
-  </div>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
 
-  <div class="project-block">
-    <div class="project-header">
-      <h3>Grok, Is This True?</h3>
-      <span>2025–26</span>
+    <div class="sidebar-group">
+      <div class="sidebar-label">Point of Interest</div>
+      <a class="sidebar-item" href="#tourist-map">Tourist Map</a>
+      <a class="sidebar-item" href="#you-are-here">You Are Here</a>
+      <a class="sidebar-item" href="#in-stock">In Stock</a>
+      <a class="sidebar-item" href="#due-process">Due Process</a>
+      <a class="sidebar-item" href="#point-of-distribution">Point of Distribution</a>
+      <a class="sidebar-item" href="#i-love-ldn">I ♥ LDN</a>
+      <a class="sidebar-item" href="#reference">Reference</a>
     </div>
-    <div class="work-list">
-      <div class="work-item" onclick="goTo('have-been-thinking')">
-        <span class="work-name">Have Been Thinking Deeply for 24 Hours</span>
-        <span class="work-year">2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('in-the-history-section')">
-        <span class="work-name">In the History Section</span>
-        <span class="work-year">2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('top-secret-files')">
-        <span class="work-name">Top Secret Files</span>
-        <span class="work-year">2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('pedia')">
-        <span class="work-name">Pedia</span>
-        <span class="work-year">2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('pedia-2')">
-        <span class="work-name">Pedia 2</span>
-        <span class="work-year">2025</span>
-      </div>
-    </div>
-  </div>
 
-  <div class="project-block">
-    <div class="project-header">
-      <h3>XXXXXX</h3>
-      <span>2023–2025</span>
+    <div class="sidebar-group">
+      <div class="sidebar-label">Grok, Is This True?</div>
+      <a class="sidebar-item" href="#have-been-thinking">Have Been Thinking Deeply for 24 Hours</a>
+      <a class="sidebar-item" href="#in-the-history-section">In the History Section</a>
+      <a class="sidebar-item" href="#top-secret-files">Top Secret Files</a>
+      <a class="sidebar-item" href="#pedia">Pedia</a>
+      <a class="sidebar-item" href="#pedia-2">Pedia 2</a>
     </div>
-    <div class="work-list">
-      <div class="work-item" onclick="goTo('before-disclosure')">
-        <span class="work-name">Before Disclosure</span>
-        <span class="work-year">2026</span>
-      </div>
-      <div class="work-item" onclick="goTo('preserved-protected-prevented')">
-        <span class="work-name">Preserved, Protected, Prevented</span>
-        <span class="work-year">2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('dont-understand-me')">
-        <span class="work-name">Don't Understand Me, Don't Ignore Me, Just Exist Here</span>
-        <span class="work-year">2024</span>
-      </div>
-      <div class="work-item" onclick="goTo('i-dont-want-subversion')">
-        <span class="work-name">I Don't Want Subversion from 100 Years Ago, Who Is the Contemporary Artist?</span>
-        <span class="work-year">2024</span>
-      </div>
-      <div class="work-item" onclick="goTo('mona-lisa')">
-        <span class="work-name">Mona Lisa</span>
-        <span class="work-year">2024</span>
-      </div>
-      <div class="work-item" onclick="goTo('introduction-board')">
-        <span class="work-name">Introduction Board</span>
-        <span class="work-year">2023–2025</span>
-      </div>
-      <div class="work-item" onclick="goTo('calendar')">
-        <span class="work-name">I Want to Know How Many Seconds I Have Left to Live and I Want to Know When the Art Will Be Here</span>
-        <span class="work-year">2025</span>
-      </div>
-    </div>
-  </div>
 
-</section>
+    <div class="sidebar-group">
+      <div class="sidebar-label">XXXXXX</div>
+      <a class="sidebar-item" href="#before-disclosure">Before Disclosure</a>
+      <a class="sidebar-item" href="#preserved-protected-prevented">Preserved, Protected, Prevented</a>
+      <a class="sidebar-item" href="#dont-understand-me">Don't Understand Me, Don't Ignore Me, Just Exist Here</a>
+      <a class="sidebar-item" href="#i-dont-want-subversion">I Don't Want Subversion from 100 Years Ago, Who Is the Contemporary Artist?</a>
+      <a class="sidebar-item" href="#mona-lisa">Mona Lisa</a>
+      <a class="sidebar-item" href="#introduction-board">Introduction Board</a>
+      <a class="sidebar-item" href="#calendar">I Want to Know How Many Seconds I Have Left to Live…</a>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main" id="works">
+
+    <!-- Point of Interest -->
+    <div class="project-section">
+      <div class="project-label-row">
+        <h3>Point of Interest</h3>
+        <span>2023–2025</span>
+      </div>
+
+      <div class="work-entry" id="tourist-map" onclick="goTo('tourist-map')">
+        <div class="work-entry-image"><img src="tourist-map-1.jpg" alt="Tourist Map"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Tourist Map</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="you-are-here" onclick="goTo('you-are-here')">
+        <div class="work-entry-image"><img src="you-are-here-1.jpg" alt="You Are Here"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">You Are Here</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="in-stock" onclick="goTo('in-stock')">
+        <div class="work-entry-image"><img src="p01.jpg" alt="In Stock"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">In Stock</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="due-process" onclick="goTo('due-process')">
+        <div class="work-entry-image"><img src="due-process-1.jpg" alt="Due Process"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Due Process</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="point-of-distribution" onclick="goTo('point-of-distribution')">
+        <div class="work-entry-image"><img src="point-of-distribution-1.jpg" alt="Point of Distribution"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Point of Distribution</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="i-love-ldn" onclick="goTo('i-love-ldn')">
+        <div class="work-entry-image"><img src="i-love-ldn-1.jpg" alt="I ♥ LDN"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">I ♥ LDN</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="reference" onclick="goTo('reference')">
+        <div class="work-entry-image"><img src="reference-1.jpg" alt="Reference"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Reference</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grok, Is This True? -->
+    <div class="project-section">
+      <div class="project-label-row">
+        <h3>Grok, Is This True?</h3>
+        <span>2025–26</span>
+      </div>
+
+      <div class="work-entry" id="have-been-thinking" onclick="goTo('have-been-thinking')">
+        <div class="work-entry-image"><img src="have-been-thinking-1.jpg" alt="Have Been Thinking Deeply for 24 Hours"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Have Been Thinking Deeply for 24 Hours</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="in-the-history-section" onclick="goTo('in-the-history-section')">
+        <div class="work-entry-image"><img src="in-the-history-section-1.jpg" alt="In the History Section"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">In the History Section</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="top-secret-files" onclick="goTo('top-secret-files')">
+        <div class="work-entry-image"><img src="top-secret-1.jpg" alt="Top Secret Files"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Top Secret Files</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="pedia" onclick="goTo('pedia')">
+        <div class="work-entry-image"><img src="pedia-1.jpg" alt="Pedia"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Pedia</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="pedia-2" onclick="goTo('pedia-2')">
+        <div class="work-entry-image"><img src="pedia-2-1.jpg" alt="Pedia 2"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Pedia 2</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- XXXXXX -->
+    <div class="project-section">
+      <div class="project-label-row">
+        <h3>XXXXXX</h3>
+        <span>2023–2025</span>
+      </div>
+
+      <div class="work-entry" id="before-disclosure" onclick="goTo('before-disclosure')">
+        <div class="work-entry-image"><img src="bd-portrait-1.jpg" alt="Before Disclosure"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Before Disclosure</span>
+          <span class="work-entry-year">2026</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="preserved-protected-prevented" onclick="goTo('preserved-protected-prevented')">
+        <div class="work-entry-image"><img src="preserved-1.jpg" alt="Preserved, Protected, Prevented"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Preserved, Protected, Prevented</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="dont-understand-me" onclick="goTo('dont-understand-me')">
+        <div class="work-entry-image"><img src="dont-understand-me-1.jpg" alt="Don't Understand Me, Don't Ignore Me, Just Exist Here"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Don't Understand Me, Don't Ignore Me, Just Exist Here</span>
+          <span class="work-entry-year">2024</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="i-dont-want-subversion" onclick="goTo('i-dont-want-subversion')">
+        <div class="work-entry-image"><img src="i-dont-want-subversion-1.jpg" alt="I Don't Want Subversion from 100 Years Ago, Who Is the Contemporary Artist?"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">I Don't Want Subversion from 100 Years Ago, Who Is the Contemporary Artist?</span>
+          <span class="work-entry-year">2024</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="mona-lisa" onclick="goTo('mona-lisa')">
+        <div class="work-entry-image"><img src="mona-lisa-1.jpg" alt="Mona Lisa"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Mona Lisa</span>
+          <span class="work-entry-year">2024</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="introduction-board" onclick="goTo('introduction-board')">
+        <div class="work-entry-image"><img src="introduction-board-1.jpg" alt="Introduction Board"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">Introduction Board</span>
+          <span class="work-entry-year">2023–2025</span>
+        </div>
+      </div>
+
+      <div class="work-entry" id="calendar" onclick="goTo('calendar')">
+        <div class="work-entry-image"><img src="calendar-1.jpg" alt="I Want to Know How Many Seconds I Have Left to Live and I Want to Know When the Art Will Be Here"></div>
+        <div class="work-entry-meta">
+          <span class="work-entry-name">I Want to Know How Many Seconds I Have Left to Live and I Want to Know When the Art Will Be Here</span>
+          <span class="work-entry-year">2025</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
 
 <footer>
   <div class="footer-copy">© Sheng Shi 2025. All rights reserved</div>
@@ -379,6 +456,30 @@ footer {
 function goTo(slug) {
   window.location.href = slug + '.html';
 }
+
+// Sidebar active state on scroll
+const entries = document.querySelectorAll('.work-entry[id]');
+const sidebarLinks = document.querySelectorAll('.sidebar-item');
+
+const observer = new IntersectionObserver((obs) => {
+  obs.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      sidebarLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+entries.forEach(el => observer.observe(el));
+
+// Sidebar clicks don't trigger work page navigation
+sidebarLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.stopPropagation();
+  });
+});
 </script>
 
 </body>
