@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before Disclosure — Sheng Shi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --grey: #888;
+  --light-grey: #e0e0e0;
+  --serif: 'EB Garamond', Georgia, serif;
+  --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 48px;
+  border-bottom: 1px solid var(--light-grey);
+}
+.nav-logo {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.nav-right a {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.nav-right a:hover { color: var(--grey); }
+
+/* BACK BREADCRUMB */
+.breadcrumb {
+  margin-top: 48px;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--light-grey);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  letter-spacing: 0.05em;
+}
+.breadcrumb a { color: var(--grey); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--black); }
+.breadcrumb span { color: var(--black); }
+
+/* MAIN LAYOUT */
+.work-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--light-grey);
+}
+
+/* LEFT: info */
+.work-info {
+  padding: 3rem 2rem 4rem;
+  border-right: 1px solid var(--light-grey);
+  position: sticky;
+  top: 48px;
+  align-self: start;
+}
+.work-project {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 1rem;
+}
+.work-title {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+.work-meta {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--light-grey);
+}
+.work-meta-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+}
+.work-meta-label {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey);
+  padding-top: 0.1rem;
+}
+.work-meta-value {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.work-desc {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--black);
+}
+.work-desc p + p {
+  margin-top: 1em;
+}
+
+/* RIGHT: images */
+.work-images {
+  padding: 3rem 2rem 4rem;
+}
+.work-images-label {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+/* CAROUSEL */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  background: #f5f5f5;
+  cursor: zoom-in;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.carousel-slide {
+  flex: 0 0 100%;
+}
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.carousel-slide-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.carousel-slide-placeholder span {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: #444;
+  text-transform: uppercase;
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0 0;
+}
+.carousel-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+.carousel-btn {
+  background: none;
+  border: 1px solid var(--light-grey);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--black);
+  transition: border-color 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-btn:hover { border-color: var(--black); background: var(--black); color: var(--white); }
+.carousel-counter {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+  letter-spacing: 0.1em;
+}
+.image-caption {
+  padding: 0.6rem 0 1rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--grey);
+  letter-spacing: 0.03em;
+  min-height: 2rem;
+}
+
+/* COMPONENT DIVIDER */
+.component-divider {
+  margin: 2rem 0 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--light-grey);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+/* LIGHTBOX */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.97);
+  z-index: 9000;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+.lightbox-close {
+  position: fixed;
+  top: 1.5rem; right: 2rem;
+  background: none; border: none;
+  color: white; font-family: var(--sans);
+  font-size: 0.75rem; cursor: pointer;
+  opacity: 0.5; letter-spacing: 0.1em;
+  transition: opacity 0.2s;
+}
+.lightbox-close:hover { opacity: 1; }
+
+/* NAV BETWEEN WORKS */
+.work-nav {
+  border-top: 1px solid var(--light-grey);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.work-nav-item {
+  padding: 1.5rem 2rem;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.work-nav-item:hover { background: #f8f8f8; }
+.work-nav-item.next { border-left: 1px solid var(--light-grey); text-align: right; }
+.work-nav-label {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 0.4rem;
+}
+.work-nav-title {
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* FOOTER */
+footer {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--light-grey);
+}
+.footer-copy {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--grey);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .work-body { grid-template-columns: 1fr; }
+  .work-info {
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--light-grey);
+    padding: 2rem 1rem;
+  }
+  .work-images { padding: 2rem 1rem; }
+  nav { padding: 0 1rem; }
+  .breadcrumb { padding: 1rem; }
+  .work-nav-item { padding: 1rem; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="sheng-shi.html">Sheng Shi</a>
+  <div class="nav-right">
+    <a href="sheng-shi.html#works">Works</a>
+    <a href="about.html">About</a>
+    <a href="practice.html">Practice</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="sheng-shi.html">Works</a>
+  <span>›</span>
+  <span>Before Disclosure</span>
+</div>
+
+<div class="work-body">
+
+  <!-- LEFT: INFO -->
+  <div class="work-info">
+    <div class="work-project">Installation</div>
+    <h1 class="work-title">Before Disclosure</h1>
+
+    <div class="work-meta">
+      <div class="work-meta-row">
+        <div class="work-meta-label">Year</div>
+        <div class="work-meta-value">2025</div>
+      </div>
+      <div class="work-meta-row">
+        <div class="work-meta-label">Medium</div>
+        <div class="work-meta-value">Photographs, oil paint, found document, tracing paper, Japanese stab binding</div>
+      </div>
+      <div class="work-meta-row">
+        <div class="work-meta-label">Components</div>
+        <div class="work-meta-value">2</div>
+      </div>
+    </div>
+
+    <div class="work-desc">
+      <p><em>Before Disclosure</em> is an installation consisting of two components.</p>
+
+      <p>The first involves portrait photographs of public figures connected to the Epstein case — Jeffrey Epstein, Donald Trump, Elon Musk, and David A. Ross — over which I hand-paint black squares covering their faces. The black square is the same visual form used in media coverage to protect victims' identities. Here, applied to the powerful, it asks: who does concealment protect?</p>
+
+      <p>The same gesture that shields survivors from exposure has long operated in reverse — obscuring the faces, names, and networks of those with wealth and institutional access. The black square does not discriminate by intention; it is a form of omission. In painting over these figures, I do not accuse but enact the same erasure the legal and financial system performs on their behalf.</p>
+
+      <p>The second component is the 119-page New York Grand Jury DOJ document concerning the Epstein case — every page fully redacted to black by the Department of Justice before public release. I have printed each page on tracing paper and bound the document using Japanese stab binding. The resulting book is legible as object: a structure of held-back language, a volume of authorised silence. Light passes through the pages. The redactions stack and accumulate. Nothing is disclosed.</p>
+
+      <p>Together, the two components examine concealment as a system — operating across media, law, and institutional power — and the double silence that protects perpetrators and names victims at once.</p>
+    </div>
+  </div>
+
+  <!-- RIGHT: IMAGES -->
+  <div class="work-images">
+
+    <div class="work-images-label">Component I — Portraits</div>
+
+    <div class="carousel" id="carousel-1">
+      <div class="carousel-track" id="track-1">
+
+        <div class="carousel-slide">
+          <div class="carousel-slide-placeholder">
+            <span>Image to be added</span>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="carousel-slide-placeholder">
+            <span>Image to be added</span>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="carousel-slide-placeholder">
+            <span>Image to be added</span>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="carousel-slide-placeholder">
+            <span>Image to be added</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <div class="carousel-btns">
+        <button class="carousel-btn" onclick="moveCarousel('carousel-1','track-1','counter-1',-1)" aria-label="Previous">&#8592;</button>
+        <button class="carousel-btn" onclick="moveCarousel('carousel-1','track-1','counter-1',1)" aria-label="Next">&#8594;</button>
+      </div>
+      <div class="carousel-counter" id="counter-1">1 / 4</div>
+    </div>
+    <div class="image-caption" id="caption-1">
+      Hand-painted black squares on portrait photographs, 2025
+    </div>
+
+    <div class="component-divider">Component II — Redacted Document</div>
+
+    <div class="carousel" id="carousel-2">
+      <div class="carousel-track" id="track-2">
+
+        <div class="carousel-slide">
+          <div class="carousel-slide-placeholder">
+            <span>Image to be added</span>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="carousel-slide-placeholder">
+            <span>Image to be added</span>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="carousel-slide-placeholder">
+            <span>Image to be added</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <div class="carousel-btns">
+        <button class="carousel-btn" onclick="moveCarousel('carousel-2','track-2','counter-2',-1)" aria-label="Previous">&#8592;</button>
+        <button class="carousel-btn" onclick="moveCarousel('carousel-2','track-2','counter-2',1)" aria-label="Next">&#8594;</button>
+      </div>
+      <div class="carousel-counter" id="counter-2">1 / 3</div>
+    </div>
+    <div class="image-caption" id="caption-2">
+      119-page DOJ Epstein document, fully redacted, printed on tracing paper, Japanese stab binding, 2025
+    </div>
+
+  </div>
+</div>
+
+<!-- BETWEEN WORKS NAV -->
+<div class="work-nav">
+  <a class="work-nav-item" href="i-dont-want-subversion.html">
+    <div class="work-nav-label">← Previous</div>
+    <div class="work-nav-title">I Don't Want Subversion from 100 Years Ago, Who Is the Contemporary Artist?</div>
+  </a>
+  <div class="work-nav-item next">
+    <div class="work-nav-label">Next →</div>
+    <div class="work-nav-title" style="color:var(--grey);">—</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-copy">© Sheng Shi 2025</div>
+  <div class="footer-copy"><a href="contact.html" style="color:var(--grey)">Contact</a></div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+// ---- CAROUSEL ----
+var carouselState = {
+  'carousel-1': { index: 0, total: 4 },
+  'carousel-2': { index: 0, total: 3 }
+};
+
+var captions = {
+  'carousel-1': [
+    'Jeffrey Epstein, hand-painted black square, oil on photograph, 2025',
+    'Donald Trump, hand-painted black square, oil on photograph, 2025',
+    'Elon Musk, hand-painted black square, oil on photograph, 2025',
+    'David A. Ross, hand-painted black square, oil on photograph, 2025'
+  ],
+  'carousel-2': [
+    '119-page DOJ Epstein document, tracing paper, Japanese stab binding, 2025',
+    'Detail — redacted pages, translucent accumulation, 2025',
+    'Detail — binding, 2025'
+  ]
+};
+
+function moveCarousel(carouselId, trackId, counterId, dir) {
+  var state = carouselState[carouselId];
+  state.index = (state.index + dir + state.total) % state.total;
+  document.getElementById(trackId).style.transform = 'translateX(-' + (state.index * 100) + '%)';
+  document.getElementById(counterId).textContent = (state.index + 1) + ' / ' + state.total;
+  var captionEl = document.getElementById(carouselId === 'carousel-1' ? 'caption-1' : 'caption-2');
+  if (captions[carouselId]) captionEl.textContent = captions[carouselId][state.index];
+}
+
+// Click to zoom (only for real images, not placeholders)
+document.querySelectorAll('.carousel').forEach(function(carousel) {
+  carousel.addEventListener('click', function() {
+    var img = carousel.querySelector('.carousel-track .carousel-slide:nth-child(' + (parseInt(carousel.querySelector('.carousel-counter') ? 1 : 1) + 1) + ') img');
+    // find current visible slide
+    var id = carousel.id;
+    var state = carouselState[id];
+    var slides = carousel.querySelectorAll('.carousel-slide');
+    var currentSlide = slides[state.index];
+    var currentImg = currentSlide ? currentSlide.querySelector('img') : null;
+    if (currentImg) {
+      openLightbox(currentImg.src);
+    }
+  });
+});
+
+// ---- LIGHTBOX ----
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
