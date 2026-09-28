@@ -374,14 +374,66 @@ footer {
 
 
 
-.practice-page {
+/* PRACTICE LAYOUT */
+.practice-layout {
   margin-top: 48px;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* SIDEBAR */
+.practice-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 48px;
+  height: calc(100vh - 48px);
+  overflow-y: auto;
+  border-right: 1px solid var(--light-grey);
+  padding: 2rem 0 4rem;
+}
+.practice-sidebar::-webkit-scrollbar { display: none; }
+
+.sidebar-label {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey);
+  padding: 0 1.5rem 0.6rem;
+}
+
+.sidebar-item {
+  display: block;
+  padding: 0.3rem 1.5rem;
+  font-family: var(--serif);
+  font-size: 0.88rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--grey);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.sidebar-item:hover { color: var(--black); }
+.sidebar-item.active { color: var(--black); }
+
+/* MAIN */
+.practice-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.practice-page {
+  border-top: 2px solid var(--black);
 }
 
 .practice-header {
-  padding: 3rem 2rem 2rem;
+  padding: 2.5rem 2rem 2rem;
   border-bottom: 1px solid var(--light-grey);
-  max-width: 720px;
+  position: sticky;
+  top: 48px;
+  background: var(--white);
+  z-index: 5;
 }
 
 .practice-label {
@@ -390,12 +442,12 @@ footer {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--grey);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .practice-title {
   font-family: var(--serif);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: 0;
@@ -439,10 +491,11 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .practice-sidebar { display: none; }
   .practice-body { grid-template-columns: 1fr; }
   .practice-text { border-right: none; border-bottom: 1px solid var(--light-grey); padding: 2rem 1rem; }
   .practice-images { padding: 2rem 1rem; }
-  .practice-header { padding: 2rem 1rem; }
+  .practice-header { padding: 1.5rem 1rem; position: static; }
 }
 </style>
 </head>
@@ -458,11 +511,21 @@ footer {
   </div>
 </nav>
 
-<div class="practice-page">
+<div class="practice-layout">
+
+  <aside class="practice-sidebar">
+    <div class="sidebar-label">Methodology</div>
+    <a class="sidebar-item active" href="#amazon-technofeudalism">Amazon &amp; Technofeudalism</a>
+    <a class="sidebar-item" href="#perceptual-cartography">Perceptual Cartography</a>
+  </aside>
+
+  <main class="practice-main">
+
+<div class="practice-page" id="amazon-technofeudalism">
 
   <div class="practice-header">
     <div class="practice-label">Practice Methodology</div>
-    <h1 class="practice-title">Amazon & Technofeudalism</h1>
+    <h1 class="practice-title">Amazon &amp; Technofeudalism</h1>
   </div>
 
   <div class="practice-body">
@@ -470,9 +533,9 @@ footer {
     <div class="practice-text">
       <p>All the readymade materials for my works are purchased from Amazon, and I deliberately place Amazon delivery labels in hidden corners of each piece. This practice directly responds to the concept of technofeudalism.</p>
       <p>Varoufakis argues that we are no longer living in capitalism but have entered a new form of feudalism. The lords are now platform companies like Amazon and Google. In medieval times, peasants had to farm on the lord's land and pay rent. Today, if you want to buy things, sell things, or simply exist, you must go through these platforms, paying a "toll" at every step. This is no longer a free market transaction but a relationship of dependency.</p>
-      <p>This feeling becomes particularly concrete in my own art practice. When I need materials, theoretically I could go to physical stores, but in reality? Amazon's network has spread too wide — logistics, warehousing, payment systems, even the cloud storage I use probably runs on AWS. Bypassing it becomes both inconvenient and uneconomical. This is the core of technofeudalism: you think you're making free choices, but you're actually operating within an ecosystem controlled by a single entity.</p>
+      <p>This feeling becomes particularly concrete in my own art practice. When I need materials, theoretically I could go to physical stores, but in reality? Amazon's network has spread too wide: logistics, warehousing, payment systems, even the cloud storage I use probably runs on AWS. Bypassing it becomes both inconvenient and uneconomical. This is the core of technofeudalism: you think you're making free choices, but you're actually operating within an ecosystem controlled by a single entity.</p>
       <p>When I attach those delivery labels, there is a real contradiction. On one hand, I'm making this dependency relationship visible. Those labels hidden in the corners of the work function like an ingredients list, telling you that this object is constituted not just of glass or paper, but also by Amazon's logistics network. On the other hand, this gesture itself acknowledges that I cannot escape. I'm not claiming "I resist Amazon." I'm saying: look, even critique must be built with their materials.</p>
-      <p>These labels are intentionally hidden, not proudly displayed on the surface. You have to turn the work over, bend down, and look carefully to find them. This mirrors how technofeudalism operates — it doesn't rely on obvious coercion but quietly penetrates through convenience, efficiency, and the reality of "no alternative."</p>
+      <p>These labels are intentionally hidden, not proudly displayed on the surface. You have to turn the work over, bend down, and look carefully to find them. This mirrors how technofeudalism operates: it doesn't rely on obvious coercion but quietly penetrates through convenience, efficiency, and the reality of "no alternative."</p>
       <p>Medieval serfs had to provide both grain and labour service. We not only pay money but also "freely" provide behavioural data, which may be worth more than the products themselves. Even the tools you use to resist are provided by it.</p>
     </div>
 
@@ -509,6 +572,57 @@ footer {
 
 </div>
 
+<!-- SECOND METHODOLOGY -->
+<div class="practice-page" id="perceptual-cartography">
+
+  <div class="practice-header">
+    <div class="practice-label">Practice Methodology</div>
+    <h1 class="practice-title">Perceptual Cartography</h1>
+  </div>
+
+  <div class="practice-body">
+
+    <div class="practice-text">
+      <p>Perceptual Cartography is a spatial notation method based on subjective experience rather than objective measurement. It transforms individual or collective feelings, impressions, and experiences of space into map language, in order to reveal phenomenological truths that conventional cartography ignores.</p>
+      <p>The method marks "presence" rather than precise coordinates. It does not pursue completeness but authenticity. Each mark represents not an object but a quality of experience: the feeling of a space, the weight of attention, the texture of occupation.</p>
+      <p>This method emerged from a simple observation on London streets. Advertising billboards and street graffiti both occupy public visual space without public consent. But one is legal, the other criminal. The answer is obvious but revealing: graffiti gets criminalised because it is "non-compensated" and "non-capitalist." Billboards get legalised because of taxation and capital logic. Both hijack attention, but commercial capital's purchase of attention is protected while individuals reclaiming it are prosecuted.</p>
+      <p>I wanted to make this asymmetry visible not through theoretical argument but through direct intervention in how we perceive and map urban space. Working on these maps led me to examine the legal frameworks themselves. I found the Criminal Justice Act and Criminal Damage Act provisions used to punish street graffiti, and began systematically replacing terms: "graffiti" became "advertising," "criminal damage" became "commercial damage." Applied word for word, the laws punishing graffiti become entirely reasonable when directed at advertising. Which reveals that their "legitimacy" is not built on justice but on capital's ability to pay.</p>
+      <p>The project also questioned objective representation itself. When you place two globes side by side (one conventionally coloured, one stylised) neither is closer to "reality." Every representation of space is a choice; every choice carries a position; every position quietly disciplines how we perceive. Cartography has never been about recording the world. It has always been about constructing it. Perceptual Cartography makes that construction visible.</p>
+    </div>
+
+    <div class="practice-images">
+      <div class="practice-images-label">Related Works</div>
+      <div class="carousel" id="carousel-pc">
+        <div class="carousel-track">
+          <div class="carousel-slide active">
+            <img src="tourist-map-1.jpg" alt="Tourist Map" onclick="openLightbox('tourist-map-1.jpg')">
+            <div class="carousel-caption">Tourist Map, 2025</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="you-are-here-1.jpg" alt="You Are Here" onclick="openLightbox('you-are-here-1.jpg')">
+            <div class="carousel-caption">You Are Here, 2025</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="in-stock-1.jpg" alt="In Stock" onclick="openLightbox('in-stock-1.jpg')">
+            <div class="carousel-caption">In Stock, 2025</div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-pc-prev">← Prev</button>
+          <span class="carousel-counter" id="carousel-pc-counter"></span>
+          <button class="carousel-btn" id="carousel-pc-next">Next →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+  </main>
+
+</div>
+
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
@@ -529,10 +643,48 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeLightbox();
 });
 (function() {
+  var sections = document.querySelectorAll('.practice-page[id]');
+  var sidebarLinks = document.querySelectorAll('.practice-sidebar .sidebar-item');
+  if (sections.length && sidebarLinks.length) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          sidebarLinks.forEach(function(link) {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(function(el) { observer.observe(el); });
+  }
+})();
+
+(function() {
   var slides = document.querySelectorAll('.carousel-slide');
   var counter = document.getElementById('carousel-counter');
   var prevBtn = document.getElementById('carousel-prev');
   var nextBtn = document.getElementById('carousel-next');
+  var current = 0;
+  var total = slides.length;
+  if (!total) return;
+  function show(i) {
+    for (var j = 0; j < slides.length; j++) slides[j].classList.remove('active');
+    slides[i].classList.add('active');
+    if (counter) counter.textContent = (i + 1) + ' / ' + total;
+    if (prevBtn) prevBtn.disabled = (i === 0);
+    if (nextBtn) nextBtn.disabled = (i === total - 1);
+  }
+  if (prevBtn) prevBtn.onclick = function() { if (current > 0) show(--current); };
+  if (nextBtn) nextBtn.onclick = function() { if (current < total - 1) show(++current); };
+  show(0);
+})();
+
+(function() {
+  var slides = document.querySelectorAll('#carousel-pc .carousel-slide');
+  var counter = document.getElementById('carousel-pc-counter');
+  var prevBtn = document.getElementById('carousel-pc-prev');
+  var nextBtn = document.getElementById('carousel-pc-next');
   var current = 0;
   var total = slides.length;
   if (!total) return;
