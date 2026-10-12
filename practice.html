@@ -552,7 +552,7 @@ footer {
 
     <div class="practice-images">
       <div class="practice-images-label">Images</div>
-      <div class="carousel">
+      <div class="carousel" id="carousel-prime">
         <div class="carousel-track">
           <div class="carousel-slide active">
             <img src="practice-4.jpg" alt="" onclick="openLightbox('practice-4.jpg')">
@@ -672,7 +672,7 @@ document.addEventListener('keydown', function(e) {
 })();
 
 (function() {
-  var slides = document.querySelectorAll('.carousel-slide');
+  var slides = document.querySelectorAll('#carousel-prime .carousel-slide');
   var counter = document.getElementById('carousel-counter');
   var prevBtn = document.getElementById('carousel-prev');
   var nextBtn = document.getElementById('carousel-next');
